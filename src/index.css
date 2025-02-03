@@ -1,4 +1,7 @@
 /* importação do tailwind */
 @import "tailwindcss";
 
-/* sugiro fazer a adição de variáveis aqui também */
+@theme{
+    --font-inter: "inter", serif;
+    --font-play-display: "Playfair Display", serif;
+}
