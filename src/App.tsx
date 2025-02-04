@@ -1,8 +1,11 @@
 import Header from '../src/Components/Header'
+import Footer from './Components/Footer';
 function App() {
   return (
     <>
-    <Header isLogin={true}/>
+    <Header isLogin={false}/>
+    <Footer/>
+    
     </>
   );
 }

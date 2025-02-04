@@ -2,7 +2,7 @@ import logoGreen from '../assets/image/logo-green.svg'
 
 function Header(props: {isLogin: boolean}){
     return(
-        <header className='w-[1440] h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center'>
+        <header className='w-screen h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center'>
             <img src={logoGreen} alt="planta" className='w-[49px] h-[54px] flex gap-[55px] '/>
             {/*exibe menu diferente se estiver logado ou não*/}
             {props.isLogin ? 
