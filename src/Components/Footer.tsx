@@ -1,5 +1,5 @@
 import logoWhite from '../assets/image/logo-white.svg'
-import backgroundFooter from ''
+
 function Footer(){
     return(
         <footer className='bg-[url(/../src/assets/image/background-footer.png)] bg-cover bg-center w-screen h-[422px] text-white '>
