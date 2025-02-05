@@ -1,0 +1,32 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Echinocereus Cactus",
+        "price": 15.00,
+        "category": "indoor",
+        "image": "/src/assets/image/cactus.png"
+      },
+      {
+        "id": 2,
+        "name": "Echinocereus Cactus",
+        "price": 15.00,
+        "category": "indoor",
+        "image": "/src/assets/image/cactus.png"
+      },
+      {
+        "id": 3,
+        "name": "Echinocereus Cactus",
+        "price": 15.00,
+        "category": "indoor",
+        "image": "/src/assets/image/cactus.png"
+      },
+      {
+        "id": 4,
+        "name": "Echinocereus Cactus",
+        "price": 15.00,
+        "category": "indoor",
+        "image": "/src/assets/image/cactus.png"
+      }
+    ]
+  }
