@@ -1,17 +1,19 @@
 /* importação do tailwind */
 @import "tailwindcss";
 
-@theme{
-    --font-inter: "inter", serif;
-    --font-play-display: "Playfair Display", serif;
+@theme {
+  --font-inter: "inter", serif;
+  --font-play-display: "Playfair Display", serif;
 }
 
 @layer components {
-    .input-group {
-        @apply flex flex-col mb-6 gap-2 font-inter ;
+  .input-group {
+    @apply flex flex-col gap-2 font-inter font-medium;
 
-        & input {
-            @apply bg-slate-100 rounded-sm border-1 border-slate-200 p-2 focus:outline-none focus:ring-2 focus:ring-slate-300;
-        }
+    & input,
+    select,
+    textarea {
+      @apply bg-slate-100 rounded-sm font-normal border-1 border-slate-200 p-2 focus:outline-none  placeholder:text-slate-500 focus:ring-2 focus:ring-slate-300;
     }
+  }
 }

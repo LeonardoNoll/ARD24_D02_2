@@ -1,5 +1,6 @@
 import logoGreen from "../assets/image/logo-green.svg";
 import planta from "../assets/image/plant1.png";
+import SidePlant from "../Components/SidePlant.tsx";
 
 function Login() {
   return (
@@ -12,7 +13,7 @@ function Login() {
           className="w-[49px] h-[54px] ml-16 mt-4"
         />
 
-        <section className="w-[424px] h-[410px] flex gap-12 flex-col  mt-[162px] ml-[161px] mr-[151px] mb-[432px]">
+        <section className="w-[424px] h-[410px] flex gap-12 flex-col  mt-[162px] ml-[161px] mr-[151px] mb-[432px] fixed ">
           <article className="flex flex-col gap-[5px] w-[309px] h-[78px]">
             <h1 className="w-[287px] h-12 font-play-display text-emerald-900 font-[700] text-[40px] leading-12">
               Sign Up
@@ -58,7 +59,7 @@ function Login() {
 
         
       </section>
-      <img src={planta} alt="planta" className="w-[50%]"/>
+      <SidePlant/>
     </section>
   );
 }
