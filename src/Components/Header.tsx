@@ -8,7 +8,7 @@ function Header(props: {isLogin: boolean}){
             {props.isLogin ? 
             <nav className='w-[289px] h-[57px] p-4 flex gap-4'>
                 <a href='#' className='w-[58px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500'>Home</a>
-                <a href='#'className='w-[88px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500'>Products</a>
+                <a href='/produtcs'className='w-[88px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500'>Products</a>
                 <a href='#'className='w-[79px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500'>About me</a>
             </nav>
             : <nav className='w-[90px] h-[57px] p-4 flex gap-4'>
