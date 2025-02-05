@@ -5,6 +5,7 @@ import StepsToTake from './Components/StepsToTake';
 import Panel1 from './Components/Panel1';
 import BestSelling from './Components/BestSelling';
 import Carousel from './Components/Carousel';
+
 function App() {
   return (
     <>
