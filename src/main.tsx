@@ -11,12 +11,15 @@ import Footer from './components/Footer.tsx'
 
 
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <ProductProvider>
       <Routes>
         <Route index element={<App />} />
+{/*        <Route path="register-plant" element={<RegisterPlant />} />
+        <Route path="edit-plant" element={<EditPlant />} />
+        <Route path="user-config" element={<UserConfig />} />*/}
       <Route path='register-plant' element={<RegisterPlant/>}/>
       <Route path='products' element={
         <><Header isLogin={false} /><Products /><Footer/></>
@@ -25,4 +28,4 @@ createRoot(document.getElementById('root')!).render(
       </ProductProvider>
     </BrowserRouter>
   </StrictMode>,
-)
+);
