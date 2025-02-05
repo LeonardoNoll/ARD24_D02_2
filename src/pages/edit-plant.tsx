@@ -1,6 +1,6 @@
-import backgroundImage from "../assets/image/plant1.png";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import SidePlant from "../Components/SidePlant";
 
 const categories = ["Indor", "Outdoor", "Terracy & Balcony", "Office Desk"];
 
@@ -95,13 +95,7 @@ const EditPlant = () => {
             Save To Edit Plant
           </button>
         </form>
-        <div className="flex-1 relative overflow-hidden">
-          <img
-            src={backgroundImage}
-            alt="imagem de uma planta em um vaso"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <SidePlant />
       </main>
       <Footer />
     </>
