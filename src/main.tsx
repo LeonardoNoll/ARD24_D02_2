@@ -1,17 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router'
-import App from './App.tsx'
-import './index.css'
-import RegisterPlant from './pages/register-plant.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router";
+import App from "./App.tsx";
+import "./index.css";
+import RegisterPlant from "./pages/register-plant.tsx";
+import EditPlant from "./pages/edit-plant.tsx";
+import UserConfig from "./pages/user-config.tsx";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route index element={<App />} />
-      <Route path='register-plant' element={<RegisterPlant/>}/>
+        <Route path="register-plant" element={<RegisterPlant />} />
+        <Route path="edit-plant" element={<EditPlant />} />
+        <Route path="user-config" element={<UserConfig />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
-)
+);
