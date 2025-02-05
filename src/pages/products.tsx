@@ -67,7 +67,7 @@ const Products = () => {
             onClick={() => {
               window.location.href = '/add-product';
             }}
-            className="bg-emerald-900 text-white rounded-lg px-6 py-2 hover:bg-emerald-800 transition-colors"
+            className="w-[130px] h-12 flex  bg-emerald-900 rounded-[8px] font-inter font-[600] text-4 leading-[24.72px] text-white text-center px-7 py-3  "
           >
             Add plant
           </button>
