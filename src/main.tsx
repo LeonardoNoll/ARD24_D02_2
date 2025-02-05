@@ -10,13 +10,15 @@ import EditPlant from "./pages/EditPlant.tsx";
 import UserConfig from "./pages/UserConfig.tsx";
 import Products from "./pages/products.tsx";
 import RegisterPlant from "./pages/RegisterPlant.tsx";
+import Login from "./pages/Login.tsx";
+import { HomeLogoff } from "./pages/HomeLogoff.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <ProductProvider>
         <Routes>
-          <Route index element={<App />} />
+          <Route index element={<HomeLogoff />} />
           <Route path="register-plant" element={<RegisterPlant />} />
           <Route path="edit-plant" element={<EditPlant />} />
           <Route path="user-config" element={<UserConfig />} />
@@ -27,6 +29,16 @@ createRoot(document.getElementById("root")!).render(
               <>
                 <Header isLogin={false} />
                 <Products />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <>
+                <Header isLogin={false} />
+                <Login />
                 <Footer />
               </>
             }
