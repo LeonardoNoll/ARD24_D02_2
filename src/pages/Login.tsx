@@ -4,25 +4,25 @@ import SidePlant from "../Components/SidePlant.tsx";
 
 function Login() {
   return (
-    <section className="flex h-screen">
+    <section className="flex h-screen  ">
         {/*a parte de login tem 50% de largura (os outros 50% são para a imagem*/}
-      <section className="w-[50%]" >
+      <section className="w-[50%] " >
         <img
           src={logoGreen}
           alt="planta"
           className="w-[49px] h-[54px] ml-16 mt-4"
         />
 
-        <section className="w-[424px] h-[410px] flex gap-12 flex-col  mt-[162px] ml-[161px] mr-[151px] mb-[432px] fixed ">
-          <article className="flex flex-col gap-[5px] w-[309px] h-[78px]">
-            <h1 className="w-[287px] h-12 font-play-display text-emerald-900 font-[700] text-[40px] leading-12">
+        <section className="  flex gap-12 flex-col  max-w-[424px] w-full mt-[112px] mb-[432px] mx-auto justify-center">
+          <article className="flex flex-col gap-[5px] ]">
+            <h1 className="h-12 font-play-display text-emerald-900 font-[700] text-[40px] leading-12">
               Sign Up
             </h1>
-            <p className="w-[309px] h-[25px] font-inter font-normal text-[16px] leading-6 text-slate-500 ">
+            <p className=" font-inter font-normal text-[16px] leading-6 text-slate-500 ">
               Lorem ipsum dolor sit amet consectetur.
             </p>
           </article>
-          <form action="" className="input-group w-[424px] h-[284px] flex">
+          <form action="" className="input-group flex">
             <label className="font-inter font-medium text-[16px]  leading-5 text-slate-700">
               E-mail
             </label>
@@ -59,7 +59,9 @@ function Login() {
 
         
       </section>
+      <div className="w-[50%] h-full">
       <SidePlant/>
+      </div>
     </section>
   );
 }

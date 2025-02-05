@@ -5,11 +5,8 @@ import Login from './pages/Login.tsx'
 function App() {
   return (
     <>
-   
-    <Header isLogin={false}/>
-   
+  
     <Login/>
-    <Footer/>
     </>
   );
 }
