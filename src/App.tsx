@@ -2,6 +2,7 @@ import Header from '../src/Components/Header'
 import Footer from '../src/Components/Footer';
 import Login from './pages/Login.tsx'
 
+
 function App() {
   return (
     <>
@@ -9,6 +10,7 @@ function App() {
     <Header isLogin={false}/>
    
     <Login/>
+    
     <Footer/>
     </>
   );
