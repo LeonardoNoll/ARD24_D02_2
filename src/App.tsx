@@ -18,6 +18,9 @@ function App() {
     
     <Footer/>
     
+    {/* <Header isLogin={false}/>
+    
+    <Footer/> */}
     </>
   );
 }
