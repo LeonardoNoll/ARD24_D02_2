@@ -1,5 +1,6 @@
 import logoGreen from "../assets/image/logo-green.svg";
 import InvalidInputMessage from "../components/InvalidInputMessage.tsx";
+import InputConfirm from "../Components/InputConfirm.tsx";
 import SidePlant from "../Components/SidePlant";
 import { useState } from "react";
 
@@ -20,11 +21,15 @@ function RegisterUser() {
   });
 
   //estado para verificar se já houve tentativa de submit
-  const [submit, setSubmit] = useState(false);
+  const [submit, setSubmit] = useState<boolean>(false);
+
+  const [showMessage, setShowMessage] = useState<boolean>(false);
 
   function submitButton(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmit(true);
+    e.preventDefault()
+    setSubmit(true)
+    setShowMessage(true)
+    
   }
 
   return (
@@ -116,7 +121,9 @@ function RegisterUser() {
             >
               Register
             </button>
+            
           </form>
+          <InputConfirm message="Registered successfully" />
         </section>
       </section>
       <div className="w-[50%] h-full">
