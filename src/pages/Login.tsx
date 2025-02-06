@@ -1,11 +1,19 @@
+import { useSignUp } from "@clerk/clerk-react";
+import { useState } from "react";
 import logoGreen from "../assets/image/logo-green.svg";
 import SidePlant from "../Components/SidePlant.tsx";
 
 function Login() {
+  const { isLoaded, signUp, setActive } = useSignUp();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [pendingVerification, setPendingVerification] = useState(false);
+  const [code, setCode] = useState("");
+  const [error, setError] = useState("");
   return (
     <section className="flex h-screen  ">
-        {/*a parte de login tem 50% de largura (os outros 50% são para a imagem*/}
-      <section className="w-[50%] " >
+      {/*a parte de login tem 50% de largura (os outros 50% são para a imagem*/}
+      <section className="w-[50%] ">
         <img
           src={logoGreen}
           alt="planta"
@@ -55,11 +63,9 @@ function Login() {
             </button>
           </form>
         </section>
-
-        
       </section>
       <div className="w-[50%] h-full">
-      <SidePlant/>
+        <SidePlant />
       </div>
     </section>
   );
