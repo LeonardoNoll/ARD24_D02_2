@@ -52,12 +52,18 @@ function Header(props: { isLogin: boolean }) {
         </>
       ) : (
         <section className="w-[227px] h-12 flex gap-10 items-center">
-          <a className="w-16 h-[25px] font-inter font-[500] text-[16px] leading-[24px] text-center text-slate-900">
+          <Link
+            to="/register"
+            className="w-16 h-[25px] font-inter font-[500] text-[16px] leading-[24px] text-center text-slate-900"
+          >
             Register
-          </a>
-          <button className="w-[123px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
+          </Link>
+          <Link
+            to="login"
+            className="w-[123px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white"
+          >
             Login
-          </button>
+          </Link>
         </section>
       )}
     </header>
