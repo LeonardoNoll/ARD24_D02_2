@@ -19,15 +19,14 @@ createRoot(document.getElementById("root")!).render(
       <ProductProvider>
         <Routes>
           <Route index element={<HomeLogoff />} />
-          <Route path="register-plant" element={<RegisterPlant />} />
           <Route path="edit-plant" element={<EditPlant />} />
           <Route path="user-config" element={<UserConfig />} />
-          <Route path="register-plant" element={<RegisterPlant />} />
+          <Route path="products/new" element={<RegisterPlant />} />
           <Route
             path="products"
             element={
               <>
-                <Header isLogin={false} />
+                <Header isLogin={true} />
                 <Products />
                 <Footer />
               </>
