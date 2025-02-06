@@ -30,18 +30,26 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     try {
       // Monta a URL da API com os filtros
       let url = 'http://localhost:3001/products';
-      if (category || searchTerm) {
+      if (category) {
         const params = new URLSearchParams();
-        if (category) params.append('category', category);
-        if (searchTerm) params.append('name_like', searchTerm);
+        params.append('category', category);
         url += `?${params.toString()}`;
       }
-
       const response = await fetch(url);
+
+
       if (!response.ok) {
         throw new Error('Erro ao carregar produtos');
       }
-      const data = await response.json();
+      let data: Product[] = await response.json();
+
+      if (searchTerm) {
+        data = data.filter((product: Product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+  
+
       setProducts(data);
     } catch (err) {
       setError('Erro ao carregar produtos');

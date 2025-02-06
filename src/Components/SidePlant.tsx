@@ -2,7 +2,7 @@ import backgroundImage from "../assets/image/plant1.png";
 
 const SidePlant = () => {
   return (
-    <div className="flex-1 relative overflow-hidden">
+    <div className="flex-1 relative overflow-hidden h-full bg-yellow-300">
       <img
         src={backgroundImage}
         alt="imagem de uma planta em um vaso"
