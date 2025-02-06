@@ -1,15 +1,29 @@
-// src/pages/Products.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useProducts } from '../context/ProductContext';
 
 const Products = () => {
   const { products, fetchProducts } = useProducts();
   const [category, setCategory] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [shouldFetch, setShouldFetch] = useState<boolean>(true);
 
+
+  // Atualiza produtos toda vez que um novo produto é adicionado
+  useEffect(() => {
+    if (shouldFetch) {
+      fetchProducts(category, searchTerm);
+      setShouldFetch(false);
+    }
+  }, [shouldFetch, category, searchTerm, fetchProducts]);
+  
   const handleCategoryChange = (selectedCategory: string) => {
     setCategory(selectedCategory);
     fetchProducts(selectedCategory, searchTerm);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetchProducts(category, searchTerm);
   };
 
 
@@ -28,19 +42,25 @@ const Products = () => {
         <ul className="space-y-2 text-right pr-4"> 
           <li
             className={`cursor-pointer p-2 text-left rounded-lg text-slate-500`}
-            onClick={() => handleCategoryChange('indoor')}
+            onClick={() => handleCategoryChange('Indoor')}
           >
             Indoor
           </li>
           <li
             className={`cursor-pointer p-2 text-left rounded-lg text-slate-500`}
-            onClick={() => handleCategoryChange('terraceBalcony')}
+            onClick={() => handleCategoryChange('Outdoor')}
+          >
+            Outdoor
+          </li>
+          <li
+            className={`cursor-pointer p-2 text-left rounded-lg text-slate-500`}
+            onClick={() => handleCategoryChange('Terracy & Balcony')}
           >
             Terrace & Balcony
           </li>
           <li
             className={`cursor-pointer p-2 text-left rounded-lg text-slate-500`}
-            onClick={() => handleCategoryChange('officeDesk')}
+            onClick={() => handleCategoryChange('Office Desk')}
           >
             Office Desk
           </li>
@@ -54,20 +74,23 @@ const Products = () => {
         <div className="flex gap-4 items-center mb-6">
 
           {/* Campo de busca */}
-          <input
+          <form onSubmit={handleSearchSubmit} className="flex-grow">
+            <input
             type="text"
             placeholder="search by name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-grow p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-900"
-          />
+            className="flex-grow w-full p-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-900"
+            />
+        </form>
+
 
           {/* Botão de adicionar produto */}
           <button
             onClick={() => {
-              window.location.href = '/add-product';
+              window.location.href = '/products/new';
             }}
-            className="w-[130px] h-12 flex  bg-emerald-900 rounded-[8px] font-inter font-[600] text-4 leading-[24.72px] text-white text-center px-7 py-3  "
+            className="cursor-pointer w-[130px] h-12 flex  bg-emerald-900 rounded-[8px] font-inter font-[600] text-4 leading-[24.72px] text-white text-center px-7 py-3  "
           >
             Add plant
           </button>
@@ -102,6 +125,7 @@ const Products = () => {
                 </h3>
 
                 <p className="text-gray-600 mt-2">$ {product.price.toFixed(2)}</p>
+                
               </div>
             </div>
           ))}

@@ -1,32 +1,59 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Echinocereus Cactus",
-        "price": 15.00,
-        "category": "indoor",
-        "image": "/src/assets/image/cactus.png"
-      },
-      {
-        "id": 2,
-        "name": "Echinocereus Cactus",
-        "price": 15.00,
-        "category": "indoor",
-        "image": "/src/assets/image/cactus.png"
-      },
-      {
-        "id": 3,
-        "name": "Echinocereus Cactus",
-        "price": 15.00,
-        "category": "indoor",
-        "image": "/src/assets/image/cactus.png"
-      },
-      {
-        "id": 4,
-        "name": "Echinocereus Cactus",
-        "price": 15.00,
-        "category": "indoor",
-        "image": "/src/assets/image/cactus.png"
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": 1,
+      "name": "Echinocereus Cactus",
+      "subtitle": "A majestic addition to your plant collection",
+      "price": 15,
+      "discount": 20,
+      "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
+      "category": "Indoor",
+      "image": "/src/assets/image/cactus.png",
+      "highlight": false
+    },
+    {
+      "id": 2,
+      "name": "Echinocereus Cactus2",
+      "subtitle": "A majestic addition to your plant collection",
+      "price": 15,
+      "discount": 20,
+      "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
+      "category": "Indoor",
+      "image": "/src/assets/image/cactus.png",
+      "highlight": false
+    },
+    {
+      "id": 3,
+      "name": "Echinocereus Cactus3",
+      "subtitle": "A majestic addition to your plant collection",
+      "price": 15,
+      "discount": 20,
+      "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
+      "category": "Indoor",
+      "image": "/src/assets/image/cactus.png",
+      "highlight": false
+    },
+    {
+      "id": 4,
+      "name": "Echinocereus Cactus4",
+      "subtitle": "A majestic addition to your plant collection",
+      "price": 15,
+      "discount": 20,
+      "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
+      "category": "Indoor",
+      "image": "/src/assets/image/cactus.png",
+      "highlight": false
+    },
+    {
+      "id": "95bc97dc-8aac-440f-abd5-a641b302716a",
+      "name": "test",
+      "subtitle": "test",
+      "category": "Outdoor",
+      "price": 23,
+      "discount": 2,
+      "description": "dsdsd",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": false
+    }
+  ]
+}
