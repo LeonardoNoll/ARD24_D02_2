@@ -1,11 +1,10 @@
 import logoGreen from "../assets/image/logo-green.svg";
-import InvalidInputMessage from "../components/InvalidInputMessage.tsx";
+import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import SidePlant from "../Components/SidePlant";
 import { useState } from "react";
 
 function RegisterUser() {
-
   // regex
   const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -26,10 +25,9 @@ function RegisterUser() {
   const [showMessage, setShowMessage] = useState<boolean>(false);
 
   function submitButton(e: React.FormEvent) {
-    e.preventDefault()
-    setSubmit(true)
-    setShowMessage(true)
-    
+    e.preventDefault();
+    setSubmit(true);
+    setShowMessage(true);
   }
 
   return (
@@ -50,7 +48,11 @@ function RegisterUser() {
               Lorem ipsum dolor sit amet consectetur.
             </p>
           </article>
-          <form action="" className="input-group flex gap-1" onSubmit={submitButton}>
+          <form
+            action=""
+            className="input-group flex gap-1"
+            onSubmit={submitButton}
+          >
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Name
             </label>
@@ -111,7 +113,9 @@ function RegisterUser() {
               }
             />
             <InvalidInputMessage
-              validOn={formData.password === formData.confirmPassword || !submit}
+              validOn={
+                formData.password === formData.confirmPassword || !submit
+              }
               message={`Passwords are different`}
             />
 
@@ -121,7 +125,6 @@ function RegisterUser() {
             >
               Register
             </button>
-            
           </form>
           <InputConfirm message="Registered successfully" />
         </section>
