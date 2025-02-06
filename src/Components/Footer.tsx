@@ -24,7 +24,7 @@ function Footer() {
                 Links
               </h2>
               <Link
-                to="/" //TODO: Add the correct path
+                to="/about-us"
                 className="font-inter font-normal text-[16px] leading-[24px] mb-4"
               >
                 About us
@@ -74,4 +74,3 @@ function Footer() {
 }
 
 export default Footer;
-

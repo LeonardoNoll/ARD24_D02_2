@@ -13,7 +13,7 @@ function Header(props: { isLogin: boolean }) {
       {props.isLogin ? (
         <nav className="w-[289px] h-[57px] p-4 flex gap-4">
           <Link
-            to="/" //TODO: this must go to home, but the route is currently bugged
+            to="/"
             className="w-[58px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500"
           >
             Home
@@ -26,7 +26,7 @@ function Header(props: { isLogin: boolean }) {
             Products
           </Link>
           <Link
-            to="#" //TODO: change revisit when page is done
+            to="about-me"
             className="w-[79px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500"
           >
             About me
@@ -35,7 +35,7 @@ function Header(props: { isLogin: boolean }) {
       ) : (
         <nav className="w-[90px] h-[57px] p-4 flex gap-4">
           <Link
-            to="/" //TODO: this must go to home, but the route is currently bugged
+            to="/"
             className="w-[58px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500"
           >
             Home
@@ -63,4 +63,3 @@ function Header(props: { isLogin: boolean }) {
 }
 
 export default Header;
-
