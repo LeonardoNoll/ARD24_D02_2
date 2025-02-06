@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.22.11",
+    "@clerk/react-router": "^1.0.6",
     "@tailwindcss/vite": "^4.0.3",
     "ard24-d02-2": "file:",
     "react": "^18.3.1",
