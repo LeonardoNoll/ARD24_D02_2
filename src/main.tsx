@@ -15,6 +15,7 @@ import AboutUs from "./pages/AboutUs.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <App/>{/*
     <BrowserRouter>
       <ProductProvider>
         <Routes>
@@ -45,6 +46,6 @@ createRoot(document.getElementById("root")!).render(
           />
         </Routes>
       </ProductProvider>
-    </BrowserRouter>
+    </BrowserRouter>*/}
   </StrictMode>,
 );
