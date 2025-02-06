@@ -12,7 +12,7 @@ import RegisterPlant from "./pages/RegisterPlant.tsx";
 import Login from "./pages/Login.tsx";
 import { HomeLogoff } from "./pages/HomeLogoff.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
-
+import App from "./App.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App/>{/*

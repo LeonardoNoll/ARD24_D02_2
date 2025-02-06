@@ -1,8 +1,8 @@
 import logoGreen from "../assets/image/logo-green.svg";
-import InvalidInputMessage from "../components/InvalidInputMessage.tsx";
+import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import SidePlant from "../Components/SidePlant";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function RegisterUser() {
 
@@ -12,7 +12,7 @@ function RegisterUser() {
   const passwordRegex =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
-  //objeto de estados para as entradas
+  // objeto de estados para as entradas
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,18 +20,32 @@ function RegisterUser() {
     confirmPassword: "",
   });
 
-  //estado para verificar se já houve tentativa de submit
+  // estado para verificar se já houve tentativa de submit
   const [submit, setSubmit] = useState<boolean>(false);
-
   const [showMessage, setShowMessage] = useState<boolean>(false);
 
   function submitButton(e: React.FormEvent) {
-    e.preventDefault()
-    setSubmit(true)
-    setShowMessage(true)
+    e.preventDefault();
+    setSubmit(true);  // Indica que o formulário foi enviado
+    setShowMessage(true);  // Mostra a mensagem de sucesso
+    console.log(formData);
+    //zera as entradas
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
     
-  }
+    setTimeout(() => {
+      setSubmit(false);
+      
+    }, 10);
 
+    setTimeout(() => {
+      setShowMessage(false)      
+    }, 700);
+  }
   return (
     <section className="flex h-screen">
       <section className="w-[50%]">
@@ -50,6 +64,7 @@ function RegisterUser() {
               Lorem ipsum dolor sit amet consectetur.
             </p>
           </article>
+
           <form action="" className="input-group flex gap-1" onSubmit={submitButton}>
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Name
@@ -58,6 +73,7 @@ function RegisterUser() {
               type="text"
               placeholder="john down"
               className="input-group"
+              value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
@@ -74,6 +90,7 @@ function RegisterUser() {
               type="email"
               placeholder="email@exemple.com"
               className="input-group"
+              value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
@@ -83,13 +100,14 @@ function RegisterUser() {
               message={`Enter a valid e-mail`}
             />
 
-            <label className="font-inter font-medium text-[16px] leading-5 text-slate-700 ">
+            <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Password
             </label>
             <input
               type="password"
               placeholder="••••••••"
               className="input-group"
+              value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }
@@ -99,15 +117,17 @@ function RegisterUser() {
               message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
             />
 
-            <label className="font-inter font-medium text-[16px] leading-5 text-slate-700 ">
+            <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Confirm Password
             </label>
             <input
               type="password"
               placeholder="••••••••"
               className="input-group"
+              value={formData.confirmPassword}
               onChange={(e) =>
                 setFormData({ ...formData, confirmPassword: e.target.value })
+                
               }
             />
             <InvalidInputMessage
@@ -121,9 +141,10 @@ function RegisterUser() {
             >
               Register
             </button>
-            
           </form>
-          <InputConfirm message="Registered successfully" />
+
+          {/* Exibe a mensagem apenas se showMessage for true */}
+          {showMessage && <InputConfirm message="Registered successfully" />}
         </section>
       </section>
       <div className="w-[50%] h-full">
