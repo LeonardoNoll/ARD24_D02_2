@@ -1,12 +1,13 @@
-import logoGreen from "../assets/image/logo-green.svg";
 import eye from "../assets/image/eye.png";
+import logoGreen from "../assets/image/logo-green.svg";
 import ocult from "../assets/image/ocult.png";
 
-import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
-import InputConfirm from "../Components/InputConfirm.tsx";
-import SidePlant from "../Components/SidePlant";
+import { useSignUp, useUser } from "@clerk/clerk-react";
 import { useState } from "react";
-import { useSignUp } from "@clerk/clerk-react";
+import InputConfirm from "../Components/InputConfirm.tsx";
+import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
+import SidePlant from "../Components/SidePlant";
+import { useNavigate } from "react-router";
 
 // regex
 const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
@@ -15,6 +16,9 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
 function RegisterUser() {
   const { isLoaded, signUp, setActive } = useSignUp();
+  const { user } = useUser();
+  const navigate = useNavigate();
+
   // objeto de estados para as entradas
   const [formData, setFormData] = useState({
     name: "",
@@ -26,16 +30,16 @@ function RegisterUser() {
   // estado para verificar se já houve tentativa de submit
   const [submit, setSubmit] = useState<boolean>(false);
   const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 
-  function submitButton(e: React.FormEvent) {
+  async function submitButton(e: React.FormEvent) {
     e.preventDefault();
     if (!isLoaded) return;
-    // if any off this is false, register failed
     if (
       !(
         nameRegex.test(formData.name) &&
@@ -48,11 +52,23 @@ function RegisterUser() {
       setShowMessage(false);
       return;
     }
+    try {
+      await signUp.create({
+        emailAddress: formData.email,
+        password: formData.password,
+        firstName: formData.name.split(" ")[0],
+        lastName: formData.name.split(" ")[1],
+      });
+      if (signUp.createdSessionId) {
+        navigate("/");
+      } else {
+        throw new Error("Failed to create session.");
+      }
+    } catch (err: any) {
+      setError(err.errors[0].message);
+      console.error(err);
+    }
 
-    // setSubmit(true); // Indica que o formulário foi enviado
-    // setShowMessage(true); // Mostra a mensagem de sucesso
-
-    //zera as entradas
     setFormData({
       name: "",
       email: "",
