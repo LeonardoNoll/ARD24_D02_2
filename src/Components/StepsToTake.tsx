@@ -3,12 +3,12 @@ import watering from '../assets/image/drop.png';
 import nutrients from '../assets/image/bag.png';
 const StepsToTake = () => {
     return (
-      <div className="pt-[70px] ml-[112px]">
+      <div className="justify-center w-full flex flex-col gap-[80px] mt-[148px]">
         <div className="text-center">
-            <h1 className="font-play-display text-emerald-950 text-[40px] font-[700]">Steps to take care of your plants</h1>
+            <h1 className="font-play-display text-emerald-900 text-[40px] font-[700]">Steps to take care of your plants</h1>
             <p className="font-inter font-[400] text-[16px] text-slate-500 w-[682px] text-center m-[auto] mt-[20px] mb-[80px]">By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants.</p>
         </div>
-        <div className="flex justify-around" >
+        <div className="flex justify-center gap-[48px]" >
             <div className="text-center w-[342px]">
                 <img src={watering} alt="Water" className='m-[auto]'/>
                 <h1 className='font-inter text-[24px] font-[700] text-slate-950 mt-[30px] mb-[30px]'>Watering</h1>
