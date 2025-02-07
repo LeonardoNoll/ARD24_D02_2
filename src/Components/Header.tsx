@@ -1,5 +1,5 @@
-import logoGreen from "../assets/image/logo-green.svg";
 import { Link } from "react-router";
+import logoGreen from "../assets/image/logo-green.svg";
 
 function Header(props: { isLogin: boolean }) {
   return (
@@ -26,7 +26,7 @@ function Header(props: { isLogin: boolean }) {
             Products
           </Link>
           <Link
-            to="about-me"
+            to="/about-me"
             className="w-[79px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500"
           >
             About me
@@ -45,17 +45,25 @@ function Header(props: { isLogin: boolean }) {
 
       {/*mostra um determinado botao se tiver ou não logado*/}
       {props.isLogin ? (
-        <button className="w-[139px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
-          Log out
-        </button>
+        <>
+          <button className="w-[139px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
+            Log out
+          </button>
+        </>
       ) : (
         <section className="w-[227px] h-12 flex gap-10 items-center">
-          <a className="w-16 h-[25px] font-inter font-[500] text-[16px] leading-[24px] text-center text-slate-900">
+          <Link
+            to="/register"
+            className="w-16 h-[25px] font-inter font-[500] text-[16px] leading-[24px] text-center text-slate-900"
+          >
             Register
-          </a>
-          <button className="w-[123px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
+          </Link>
+          <Link
+            to="/login"
+            className="w-[123px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white"
+          >
             Login
-          </button>
+          </Link>
         </section>
       )}
     </header>
