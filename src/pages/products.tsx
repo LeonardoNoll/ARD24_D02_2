@@ -99,6 +99,7 @@ const Products = () => {
 
        {/* Listagem de produtos */}
        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.length === 0 && <p className="text-lg text-center">No products found.</p>}
           {products.map((product) => (
             <div
               key={product.id}
