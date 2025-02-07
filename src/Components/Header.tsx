@@ -4,11 +4,13 @@ import logoGreen from "../assets/image/logo-green.svg";
 function Header(props: { isLogin: boolean }) {
   return (
     <header className="w-screen h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center">
-      <img
-        src={logoGreen}
-        alt="planta"
-        className="w-[49px] h-[54px] flex gap-[55px] "
-      />
+      <Link title="Home" to="/">
+        <img
+          src={logoGreen}
+          alt="planta"
+          className="w-[49px] h-[54px] flex gap-[55px] "
+        />
+      </Link>
       {/*exibe menu diferente se estiver logado ou não*/}
       {props.isLogin ? (
         <nav className="w-[289px] h-[57px] p-4 flex gap-4">
