@@ -26,7 +26,7 @@ function Header(props: { isLogin: boolean }) {
             Products
           </Link>
           <Link
-            to="about-me"
+            to="/about-me"
             className="w-[79px] h-[25px] font-normal font400 leading-[24px] text-4 text-center text-slate-500"
           >
             About me
@@ -59,7 +59,7 @@ function Header(props: { isLogin: boolean }) {
             Register
           </Link>
           <Link
-            to="login"
+            to="/login"
             className="w-[123px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white"
           >
             Login
