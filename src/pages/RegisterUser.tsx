@@ -6,14 +6,15 @@ import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import SidePlant from "../Components/SidePlant";
 import { useState } from "react";
+import { useSignUp } from "@clerk/clerk-react";
+
+// regex
+const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
 function RegisterUser() {
-  // regex
-  const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const passwordRegex =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
-
+  const { isLoaded, signUp, setActive } = useSignUp();
   // objeto de estados para as entradas
   const [formData, setFormData] = useState({
     name: "",
@@ -28,12 +29,28 @@ function RegisterUser() {
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
 
   function submitButton(e: React.FormEvent) {
     e.preventDefault();
-    setSubmit(true); // Indica que o formulário foi enviado
-    setShowMessage(true); // Mostra a mensagem de sucesso
+    if (!isLoaded) return;
+    // if any off this is false, register failed
+    if (
+      !(
+        nameRegex.test(formData.name) &&
+        emailRegex.test(formData.email) &&
+        passwordRegex.test(formData.password) &&
+        formData.password === formData.confirmPassword
+      )
+    ) {
+      setSubmit(true);
+      setShowMessage(false);
+      return;
+    }
+
+    // setSubmit(true); // Indica que o formulário foi enviado
+    // setShowMessage(true); // Mostra a mensagem de sucesso
 
     //zera as entradas
     setFormData({
@@ -42,16 +59,6 @@ function RegisterUser() {
       password: "",
       confirmPassword: "",
     });
-
-    //apaga as mensagens de erro
-    setTimeout(() => {
-      setSubmit(false);
-    }, 10);
-
-    //esconde a mensagem de 1.8seg 
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 1800);
   }
   return (
     <section className="flex h-screen">
@@ -180,7 +187,7 @@ function RegisterUser() {
                 )}
               </button>
             </section>
-            
+
             <InvalidInputMessage
               validOn={
                 formData.password === formData.confirmPassword || !submit
@@ -191,13 +198,12 @@ function RegisterUser() {
             {/* Exibe a mensagem apenas se showMessage for true */}
             {showMessage && <InputConfirm message="Registered successfully" />}
             <button
-              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600] text-center font-[16px] leading-6 mt-8"
+              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6 mt-8"
               type="submit"
             >
               Register
             </button>
           </form>
-
         </section>
       </section>
       <div className="w-[50%] h-full">
@@ -208,3 +214,13 @@ function RegisterUser() {
 }
 
 export default RegisterUser;
+
+////apaga as mensagens de erro
+//setTimeout(() => {
+//  setSubmit(false);
+//}, 10);
+//
+////esconde a mensagem de 1.8seg
+//setTimeout(() => {
+//  setShowMessage(false);
+//}, 1800);
