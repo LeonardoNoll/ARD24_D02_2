@@ -1,18 +1,23 @@
-import logoGreen from "../assets/image/logo-green.svg";
 import eye from "../assets/image/eye.png";
+import logoGreen from "../assets/image/logo-green.svg";
 import ocult from "../assets/image/ocult.png";
 
-import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
-import InputConfirm from "../Components/InputConfirm.tsx";
-import SidePlant from "../Components/SidePlant";
+import { useSignUp, useUser } from "@clerk/clerk-react";
 import { useState } from "react";
+import InputConfirm from "../Components/InputConfirm.tsx";
+import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
+import SidePlant from "../Components/SidePlant";
+import { useNavigate } from "react-router";
+
+// regex
+const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
 function RegisterUser() {
-  // regex
-  const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const passwordRegex =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+  const { isLoaded, signUp, setActive } = useSignUp();
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   // objeto de estados para as entradas
   const [formData, setFormData] = useState({
@@ -25,33 +30,51 @@ function RegisterUser() {
   // estado para verificar se já houve tentativa de submit
   const [submit, setSubmit] = useState<boolean>(false);
   const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
 
-  function submitButton(e: React.FormEvent) {
+  async function submitButton(e: React.FormEvent) {
     e.preventDefault();
-    setSubmit(true); // Indica que o formulário foi enviado
-    setShowMessage(true); // Mostra a mensagem de sucesso
+    if (!isLoaded) return;
+    if (
+      !(
+        nameRegex.test(formData.name) &&
+        emailRegex.test(formData.email) &&
+        passwordRegex.test(formData.password) &&
+        formData.password === formData.confirmPassword
+      )
+    ) {
+      setSubmit(true);
+      setShowMessage(false);
+      return;
+    }
+    try {
+      await signUp.create({
+        emailAddress: formData.email,
+        password: formData.password,
+        firstName: formData.name.split(" ")[0],
+        lastName: formData.name.split(" ")[1],
+      });
+      if (signUp.createdSessionId) {
+        navigate("/");
+      } else {
+        throw new Error("Failed to create session.");
+      }
+    } catch (err: any) {
+      setError(err.errors[0].message);
+      console.error(err);
+    }
 
-    //zera as entradas
     setFormData({
       name: "",
       email: "",
       password: "",
       confirmPassword: "",
     });
-
-    //apaga as mensagens de erro
-    setTimeout(() => {
-      setSubmit(false);
-    }, 10);
-
-    //esconde a mensagem de 1.8seg 
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 1800);
   }
   return (
     <section className="flex h-screen">
@@ -180,7 +203,7 @@ function RegisterUser() {
                 )}
               </button>
             </section>
-            
+
             <InvalidInputMessage
               validOn={
                 formData.password === formData.confirmPassword || !submit
@@ -191,13 +214,12 @@ function RegisterUser() {
             {/* Exibe a mensagem apenas se showMessage for true */}
             {showMessage && <InputConfirm message="Registered successfully" />}
             <button
-              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600] text-center font-[16px] leading-6 mt-8"
+              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6 mt-8"
               type="submit"
             >
               Register
             </button>
           </form>
-
         </section>
       </section>
       <div className="w-[50%] h-full">
@@ -208,3 +230,13 @@ function RegisterUser() {
 }
 
 export default RegisterUser;
+
+////apaga as mensagens de erro
+//setTimeout(() => {
+//  setSubmit(false);
+//}, 10);
+//
+////esconde a mensagem de 1.8seg
+//setTimeout(() => {
+//  setShowMessage(false);
+//}, 1800);

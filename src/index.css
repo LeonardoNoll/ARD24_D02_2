@@ -16,4 +16,7 @@
       @apply bg-slate-100 rounded-sm font-normal border-1 border-slate-200 p-2 focus:outline-none  placeholder:text-slate-500 focus:ring-2 focus:ring-slate-300 w-full;
     }
   }
+  .nav-link {
+    @apply w-fit h-[25px] font-normal leading-[24px] text-center text-slate-500;
+  }
 }

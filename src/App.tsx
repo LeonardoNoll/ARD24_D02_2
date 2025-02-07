@@ -19,6 +19,7 @@ function App() {
       <Route path="about-me" element={<UserConfig />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="register" element={<RegisterUser />} />
+
       <Route element={<PrivateRoute />}>
         <Route path="products/id/edit" element={<EditPlant />} />
         <Route path="products/new" element={<RegisterPlant />} />
