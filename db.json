@@ -53,6 +53,17 @@
       "discount": 2,
       "description": "dsdsd",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": true
+    },
+    {
+      "id": "8118af1c-3079-4092-8293-698f7dcc4363",
+      "name": "dsdss",
+      "subtitle": "sddsd",
+      "category": "Indoor",
+      "price": 12212,
+      "discount": 20,
+      "description": "dsddsds",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": false
     }
   ]
