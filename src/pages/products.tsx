@@ -90,7 +90,7 @@ const Products = () => {
             onClick={() => {
               window.location.href = '/products/new';
             }}
-            className="cursor-pointer w-[130px] h-12 flex  bg-emerald-900 rounded-[8px] font-inter font-[600] text-4 leading-[24.72px] text-white text-center px-7 py-3  "
+            className="cursor-pointer w-[130px] h-12 flex  bg-emerald-900 rounded-[8px] font-inter font-[600] text-4 leading-[24.72px] text-white text-center px-7 py-3 hover:bg-emerald-700  "
           >
             Add plant
           </button>

@@ -249,7 +249,7 @@ const RegisterPlant = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="bg-emerald-900 rounded-md p-2 font-semibold text-[#FCFCFC]"
+            className="bg-emerald-900 rounded-md p-2 font-semibold text-[#FCFCFC] hover:bg-emerald-700 col-span-2"
           >
             Register Plant
           </button>
