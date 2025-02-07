@@ -3,8 +3,8 @@ import logoWhite from "../assets/image/logo-white.svg";
 
 function Footer() {
   return (
-    <footer className="bg-[url(/../src/assets/image/background-footer.png)] bg-cover bg-center w-screen h-[422px] text-white ">
-      <section className="w-[1274px] h-[298px] pt-[80px] pb-[44px] px-[83px]">
+    <footer className="bg-[url(/../src/assets/image/background-footer.png)] bg-cover bg-center w-full h-[422px] text-white flex justify-center ">
+      <section className="w-[1274px] h-[298px] pt-20">
         <section className="w-[1264px] h-[168] flex justify-between mb-12">
           <section className="w-274px h-135px flex gap-4 flex-col ">
             <h1 className="font-play-display font-[700] text-[40px] leading-[53px]">

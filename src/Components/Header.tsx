@@ -3,7 +3,7 @@ import logoGreen from "../assets/image/logo-green.svg";
 
 function Header(props: { isLogin: boolean }) {
   return (
-    <header className="w-screen h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center">
+    <header className="w-full h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center">
       <img
         src={logoGreen}
         alt="planta"

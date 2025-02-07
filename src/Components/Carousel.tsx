@@ -4,7 +4,8 @@ import plant3 from '../assets/image/plant3.png';
 
 const Carousel = () => {
     return (
-        <div className='flex justify-between mb-[70px] w-[1230px] ml-[112px]'>
+        <div className='flex justify-center w-full'>
+            <div className='flex justify-between mb-[70px] w-[1230px] ml-[112px]'>
             <div className="relative w-[389px]">
                 <button className='absolute top-[20px] left-[210px] font-inter font-[400] text-[16px] w-[74.9px] h-[38.85px] bg-emerald-100
                 rounded-[19.43px] border-[1px] border-white text-emerald-900'>indoor</button>
@@ -33,6 +34,7 @@ const Carousel = () => {
                 <p className='font-inter text-slate-500 font-[400] text-[16px] mt-[15px] mb-[15px]'>$15.00</p>
             </div>
 
+        </div>
         </div>
     )
 };
