@@ -1,25 +1,25 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
-import "./index.css";
-import { ProductProvider } from "./context/ProductContext.tsx";
-import Header from "./Components/Header.tsx";
 import Footer from "./Components/Footer.tsx";
+import Header from "./Components/Header.tsx";
+import { ProductProvider } from "./context/ProductContext.tsx";
+import "./index.css";
+import AboutUs from "./pages/AboutUs.tsx";
 import EditPlant from "./pages/EditPlant.tsx";
-import UserConfig from "./pages/UserConfig.tsx";
+import { HomeLogoff } from "./pages/HomeLogoff.tsx";
+import Login from "./pages/Login.tsx";
 import Products from "./pages/products.tsx";
 import RegisterPlant from "./pages/RegisterPlant.tsx";
-import Login from "./pages/Login.tsx";
-import { HomeLogoff } from "./pages/HomeLogoff.tsx";
-import AboutUs from "./pages/AboutUs.tsx";
-import App from "./App.tsx";
+import UserConfig from "./pages/UserConfig.tsx";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App/>{/*
     <BrowserRouter>
       <ProductProvider>
         <Routes>
           <Route index element={<HomeLogoff />} />
+          <Route path="register-user" element={<UserConfig />} />
           <Route path="products/id/edit" element={<EditPlant />} />
           <Route path="about-me" element={<UserConfig />} />
           <Route path="about-us" element={<AboutUs />} />
@@ -46,6 +46,6 @@ createRoot(document.getElementById("root")!).render(
           />
         </Routes>
       </ProductProvider>
-    </BrowserRouter>*/}
+    </BrowserRouter>
   </StrictMode>,
 );

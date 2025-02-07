@@ -1,5 +1,6 @@
 // src/context/ProductContext.tsx
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import InvalidInputMessage from '../Components/InvalidInputMessage';
 
 interface Product {
   id: number;
@@ -7,6 +8,7 @@ interface Product {
   price: number;
   category: string;
   image: string;
+  highlight: boolean;
 }
 
 interface ProductContextType {
@@ -28,7 +30,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     setError(null);
 
     try {
-      // Monta a URL da API com os filtros
+      {/* Monta a URL da API com os filtros*/}
       let url = 'http://localhost:3001/products';
       if (category) {
         const params = new URLSearchParams();
@@ -43,6 +45,8 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
       }
       let data: Product[] = await response.json();
 
+
+      {/* Filtra os produtos pelo termo de busca */}
       if (searchTerm) {
         data = data.filter((product: Product) =>
           product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -50,6 +54,11 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
       }
   
 
+      {/* Ordena os produtos destacados primeiro */}
+      data.sort((a, b) => (a.highlight === b.highlight ? 0 : a.highlight ? -1 : 1));
+
+
+      
       setProducts(data);
     } catch (err) {
       setError('Erro ao carregar produtos');

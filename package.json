@@ -11,6 +11,7 @@
     "server": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.22.11",
     "@tailwindcss/vite": "^4.0.3",
     "ard24-d02-2": "file:",
     "react": "^18.3.1",
