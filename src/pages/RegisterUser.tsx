@@ -1,11 +1,13 @@
 import logoGreen from "../assets/image/logo-green.svg";
+import eye from "../assets/image/eye.png";
+import ocult from "../assets/image/ocult.png";
+
 import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import SidePlant from "../Components/SidePlant";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function RegisterUser() {
-
   // regex
   const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -24,11 +26,15 @@ function RegisterUser() {
   const [submit, setSubmit] = useState<boolean>(false);
   const [showMessage, setShowMessage] = useState<boolean>(false);
 
+  //estados para ver senhas enquanto estão no input
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+
   function submitButton(e: React.FormEvent) {
     e.preventDefault();
-    setSubmit(true);  // Indica que o formulário foi enviado
-    setShowMessage(true);  // Mostra a mensagem de sucesso
-    console.log(formData);
+    setSubmit(true); // Indica que o formulário foi enviado
+    setShowMessage(true); // Mostra a mensagem de sucesso
+
     //zera as entradas
     setFormData({
       name: "",
@@ -36,15 +42,16 @@ function RegisterUser() {
       password: "",
       confirmPassword: "",
     });
-    
+
+    //apaga as mensagens de erro
     setTimeout(() => {
       setSubmit(false);
-      
     }, 10);
 
+    //esconde a mensagem de 1.8seg 
     setTimeout(() => {
-      setShowMessage(false)      
-    }, 700);
+      setShowMessage(false);
+    }, 1800);
   }
   return (
     <section className="flex h-screen">
@@ -65,7 +72,11 @@ function RegisterUser() {
             </p>
           </article>
 
-          <form action="" className="input-group flex gap-1" onSubmit={submitButton}>
+          <form
+            action=""
+            className="input-group flex gap-1"
+            onSubmit={submitButton}
+          >
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Name
             </label>
@@ -103,15 +114,35 @@ function RegisterUser() {
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Password
             </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="input-group"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-            />
+            <section className=" w-full relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                className="input-group pr-10" // 'pr-10' para adicionar espaçamento para o botão
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <img
+                    src={ocult}
+                    alt="icon ocult"
+                    className="absolute w-[32px]  right-2 top-0.5"
+                  />
+                ) : (
+                  <img
+                    src={eye}
+                    alt="icon open eye"
+                    className="absolute w-[36px]  right-2 top-0.5"
+                  />
+                )}
+              </button>
+            </section>
             <InvalidInputMessage
               validOn={!submit || passwordRegex.test(formData.password)}
               message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
@@ -120,31 +151,54 @@ function RegisterUser() {
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Confirm Password
             </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="input-group"
-              value={formData.confirmPassword}
-              onChange={(e) =>
-                setFormData({ ...formData, confirmPassword: e.target.value })
-                
-              }
-            />
+            <section className=" w-full relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="••••••••"
+                className="input-group pr-10" // 'pr-10' para adicionar espaçamento para o botão
+                value={formData.confirmPassword}
+                onChange={(e) =>
+                  setFormData({ ...formData, confirmPassword: e.target.value })
+                }
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? (
+                  <img
+                    src={ocult}
+                    alt="icon ocult"
+                    className="absolute w-[32px]  right-2 top-0.5"
+                  />
+                ) : (
+                  <img
+                    src={eye}
+                    alt="icon open eye"
+                    className="absolute w-[36px]  right-2 top-0.5"
+                  />
+                )}
+              </button>
+            </section>
+            
             <InvalidInputMessage
-              validOn={formData.password === formData.confirmPassword || !submit}
+              validOn={
+                formData.password === formData.confirmPassword || !submit
+              }
               message={`Passwords are different`}
             />
 
+            {/* Exibe a mensagem apenas se showMessage for true */}
+            {showMessage && <InputConfirm message="Registered successfully" />}
             <button
               className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600] text-center font-[16px] leading-6 mt-8"
               type="submit"
             >
               Register
             </button>
+            
           </form>
 
-          {/* Exibe a mensagem apenas se showMessage for true */}
-          {showMessage && <InputConfirm message="Registered successfully" />}
         </section>
       </section>
       <div className="w-[50%] h-full">
