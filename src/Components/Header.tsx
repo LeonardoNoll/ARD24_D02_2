@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import logoGreen from "../assets/image/logo-green.svg";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react";
 
 const isPath = (pathname: string, path: string): string =>
   pathname === path ? "nav-link text-emerald-900" : "nav-link";
@@ -42,9 +42,11 @@ function Header(props: { isLogin: boolean }) {
 
       {/*mostra um determinado botao se tiver ou não logado*/}
       <SignedIn>
-        <button className="w-[139px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
-          Log out
-        </button>
+        <SignOutButton>
+          <button className="w-[139px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
+            Log out
+          </button>
+        </SignOutButton>
       </SignedIn>
       <SignedOut>
         <section className="w-[227px] h-12 flex gap-10 items-center">
