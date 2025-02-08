@@ -15,8 +15,7 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
 function RegisterUser() {
-  const { isLoaded, signUp, setActive } = useSignUp();
-  const { user } = useUser();
+  const { isLoaded, signUp } = useSignUp();
   const navigate = useNavigate();
 
   // objeto de estados para as entradas

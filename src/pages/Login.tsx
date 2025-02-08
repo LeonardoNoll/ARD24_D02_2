@@ -1,15 +1,43 @@
-import { useSignUp } from "@clerk/clerk-react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import logoGreen from "../assets/image/logo-green.svg";
 import SidePlant from "../Components/SidePlant.tsx";
+import { useSignIn } from "@clerk/clerk-react";
 
 function Login() {
-  const { isLoaded, signUp, setActive } = useSignUp();
+  const { isLoaded, signIn, setActive } = useSignIn();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pendingVerification, setPendingVerification] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (!isLoaded) return;
+
+    setError("");
+    if (!email || !password) {
+      setError("Please fill out all fields.");
+      return;
+    }
+
+    try {
+      const result = await signIn.create({
+        identifier: email,
+        password,
+      });
+      if (result.status === "complete") {
+        console.log("Logged in");
+        await setActive({ session: result.createdSessionId });
+        navigate("/products");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <section className="flex h-screen  ">
       {/*a parte de login tem 50% de largura (os outros 50% são para a imagem*/}
@@ -29,7 +57,7 @@ function Login() {
               Lorem ipsum dolor sit amet consectetur.
             </p>
           </article>
-          <form action="" className="input-group flex">
+          <form onSubmit={handleSubmit} className="input-group flex">
             <label className="font-inter font-medium text-[16px]  leading-5 text-slate-700">
               E-mail
             </label>
@@ -37,6 +65,8 @@ function Login() {
               type="text"
               placeholder="email@exemple.com"
               className="input-group "
+              onChange={(event) => setEmail(event.target.value)}
+              value={email}
             />
             <label className="font-inter font-medium text-[16px]  leading-5 text-slate-700">
               Password
@@ -45,6 +75,8 @@ function Login() {
               type="password"
               placeholder="••••••••"
               className="input-group"
+              onChange={(event) => setPassword(event.target.value)}
+              value={password}
             />
             <section className="flex gap-3">
               <input
@@ -58,7 +90,10 @@ function Login() {
               </p>
             </section>
 
-            <button className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600]text-center font-[16px] leading-6 mt-8">
+            <button
+              type="submit"
+              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600]text-center font-[16px] leading-6 mt-8"
+            >
               Login
             </button>
           </form>
