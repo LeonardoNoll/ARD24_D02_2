@@ -31,6 +31,10 @@ export const validateImageUrl = (imageUrl: string): boolean => {
   );
 };
 
+export const validateUserName = (userName: string): boolean => {
+  return /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/.test(userName);
+};
+
 export const validateEmail = (email: string): boolean => {
   return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 };

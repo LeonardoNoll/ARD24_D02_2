@@ -41,6 +41,7 @@ function Login() {
       if (result.status === "complete") {
         console.log("Logged in");
         await setActive({ session: result.createdSessionId });
+        setLoginFailed(false);
         navigate("/products");
       }
     } catch (error) {

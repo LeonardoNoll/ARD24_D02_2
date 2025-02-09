@@ -9,12 +9,13 @@ import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import SidePlant from "../Components/SidePlant";
 import { useNavigate } from "react-router";
 import LogoLink from "../Components/LogoLink.tsx";
-import { validateEmail, validatePassword } from "../utils/validations.ts";
+import {
+  validateEmail,
+  validatePassword,
+  validateUserName,
+} from "../utils/validations.ts";
 
 // regex
-const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
 function RegisterUser() {
   const { isLoaded, signUp } = useSignUp();
@@ -43,7 +44,7 @@ function RegisterUser() {
     if (!isLoaded) return;
     if (
       !(
-        nameRegex.test(formData.name) &&
+        validateUserName(formData.name) &&
         validateEmail(formData.email) &&
         validatePassword(formData.password) &&
         formData.password === formData.confirmPassword
@@ -58,7 +59,7 @@ function RegisterUser() {
         emailAddress: formData.email,
         password: formData.password,
         firstName: formData.name.split(" ")[0],
-        lastName: formData.name.split(" ")[1],
+        lastName: formData.name.split(" ").shift(),
       });
       if (signUp.createdSessionId) {
         navigate("/");
