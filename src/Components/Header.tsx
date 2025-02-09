@@ -43,7 +43,7 @@ function Header(props: { isLogin: boolean }) {
       {/*mostra um determinado botao se tiver ou não logado*/}
       <SignedIn>
         <SignOutButton>
-          <button className="w-[139px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
+          <button className="w-[139px] h-12 flex gap-10 bg-emerald-900 hover:cursor-pointer hover:bg-emerald-800 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white">
             Log out
           </button>
         </SignOutButton>
@@ -58,7 +58,7 @@ function Header(props: { isLogin: boolean }) {
           </Link>
           <Link
             to="/login"
-            className="w-[123px] h-12 flex gap-10 bg-emerald-900 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white"
+            className="w-[123px] h-12 flex gap-10 bg-emerald-900 hover:cursor-pointer hover:bg-emerald-800 rounded-[8px] py-3 px-10 font-inter font-[600] text-4 leading-[24.72px] text-center text-white"
           >
             Login
           </Link>
