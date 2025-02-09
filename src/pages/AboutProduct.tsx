@@ -30,7 +30,7 @@ const AboutProduct: React.FC = () => {
             <h1 className="font-play-display text-5xl font-bold mb-3 text-emerald-900 ">
               {product.name}
             </h1>
-            <h3>
+            <h3 className="text-xl text-slate-500 mb-4">
               {product.subtitle}
             </h3>
             <div className="w-full aspect-video overflow-hidden flex justify-center items-center">

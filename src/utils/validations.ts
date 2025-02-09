@@ -1,7 +1,3 @@
-import { useProducts } from "../context/ProductContext";
-
-
-
 
 export const validateName = (name: string): boolean => {
     return /^.{3,80}$/.test(name.trim());
