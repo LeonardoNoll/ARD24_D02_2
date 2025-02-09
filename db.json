@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Echinocereus Cactus",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
@@ -12,7 +12,7 @@
       "highlight": false
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Echinocereus Cactus2",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
@@ -23,7 +23,7 @@
       "highlight": true
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Echinocereus Cactus3",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
@@ -34,7 +34,7 @@
       "highlight": true
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Echinocereus Cactus4",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,

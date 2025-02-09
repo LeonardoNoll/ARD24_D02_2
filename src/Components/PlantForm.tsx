@@ -8,7 +8,10 @@ import {
   validateDiscount,
   validateDescription,
   validateImageUrl,
+  validateUniqueName,
 } from "../utils/validations";
+import { useProducts } from "../context/ProductContext";
+
 
 const categories = ["Indoor", "Outdoor", "Terrace & Balcony", "Office Desk"];
 
@@ -30,6 +33,7 @@ interface PlantFormProps {
 }
 
 const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormProps) => {
+  const { products } = useProducts();
   const [formData, setFormData] = useState(
     initialData || {
       name: "",
@@ -44,14 +48,23 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
   );
 
   const [submitted, setSubmitted] = useState(false);
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
+
+  const handleBlur = (field: string) => {
+    setTouchedFields((prev) => ({ ...prev, [field]: true }));
+  };
 
   const validations = {
-    name: validateName(formData.name),
+    name: isEdit? validateName(formData.name) : validateName(formData.name) && validateUniqueName(formData.name, products),
     subtitle: validateSubtitle(formData.subtitle),
     price: validatePrice(formData.price),
     discount: validateDiscount(formData.discount),
     description: validateDescription(formData.description),
-    image: validateImageUrl(formData.image),
+    image: isEdit
+      ? formData.image === initialData?.image
+        ? true
+        : validateImageUrl(formData.image)
+      : validateImageUrl(formData.image),
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -60,10 +73,13 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
 
     if (Object.values(validations).every((v) => v)) {
       try {
-        await onSubmit({
+        const updatedData = {
           ...formData,
-          id: isEdit ? formData.id : uuidv4(), // Gera ID apenas para registro novo
-        });
+          id: isEdit ? formData.id : uuidv4(),
+          image: isEdit && !formData.image ? initialData?.image : formData.image,
+        };
+
+        await onSubmit(updatedData);
       } catch (err) {
         console.error(err);
       }
@@ -73,12 +89,10 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
   return (
     <form onSubmit={handleSubmit} className="grid grid-cols-2 flex-1 gap-8 p-12">
       <section className="col-span-2">
-        <h1 className="font-play-display text-5xl font-bold mb-3 text-emerald-900 ">
+        <h1 className="font-play-display text-5xl font-bold mb-3 text-emerald-900">
           {isEdit ? "Edit Plant" : "Register Plant"}
         </h1>
-        <h3>
-          Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa neque.
-        </h3>
+        <h3>Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa neque.</h3>
         {error && <p className="text-red-600 mb-4">{error}</p>}
       </section>
 
@@ -91,10 +105,11 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           value={formData.name}
           placeholder="Echinocereus Cactus"
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          onBlur={() => handleBlur("name")}
         />
         <InvalidInputMessage
-          validOn={!submitted || validations.name}
-          message="Name should be between 3-80 characters"
+          validOn={!touchedFields.name || validations.name}
+          message="Name should be between 3-80 characters and unique"
         />
       </div>
 
@@ -105,11 +120,12 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           type="text"
           id="plant-subtitle"
           value={formData.subtitle}
-          placeholder="A magistic addition to your plant collection"
+          placeholder="A majestic addition to your plant collection"
           onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
+          onBlur={() => handleBlur("subtitle")}
         />
         <InvalidInputMessage
-          validOn={!submitted || validations.subtitle}
+          validOn={!touchedFields.subtitle || validations.subtitle}
           message="Subtitle should be between 3-80 characters"
         />
       </div>
@@ -133,16 +149,16 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
       {/* Price Input */}
       <div className="input-group">
         <label htmlFor="price">Price</label>
-        
         <input
           type="text"
           id="price"
           value={formData.price}
           placeholder="$139.99"
           onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+          onBlur={() => handleBlur("price")}
         />
         <InvalidInputMessage
-          validOn={!submitted || validations.price}
+          validOn={!touchedFields.price || validations.price}
           message="Price should be a positive number (ex: $139.00)"
         />
       </div>
@@ -156,9 +172,10 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           value={formData.discount}
           placeholder="20%"
           onChange={(e) => setFormData({ ...formData, discount: e.target.value })}
+          onBlur={() => handleBlur("discount")}
         />
         <InvalidInputMessage
-          validOn={!submitted || validations.discount}
+          validOn={!touchedFields.discount || validations.discount}
           message="Discount should be a percentage between 0-100 (ex: 20%)"
         />
       </div>
@@ -173,10 +190,11 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           value={formData.description}
           placeholder="Ladyfinger Cactus..."
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          onBlur={() => handleBlur("description")}
         />
         <InvalidInputMessage
-          validOn={!submitted || validations.description}
-          message="Description should be less than 250 characters"
+          validOn={!touchedFields.description || validations.description}
+          message="Description should be less than 250 characters and more than 10 characters"
         />
       </div>
 
@@ -186,12 +204,12 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
         <input
           type="text"
           id="image-url"
-          value={formData.image}
           placeholder="https://via.placeholder.com/600/810b14"
           onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+          onBlur={() => handleBlur("image")}
         />
         <InvalidInputMessage
-          validOn={!submitted || validations.image}
+          validOn={!touchedFields.image || validations.image}
           message="URL should be valid (ex: https://via.placeholder.com/600/810b14)"
         />
       </div>
@@ -213,7 +231,7 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
         type="submit"
         className="bg-emerald-900 rounded-md p-2 font-semibold text-[#FCFCFC] cursor-pointer hover:bg-emerald-700 col-span-2"
       >
-        {isEdit ? "Save To Edit plant" : "Register Plant"}
+        {isEdit ? "Save Changes" : "Register Plant"}
       </button>
     </form>
   );

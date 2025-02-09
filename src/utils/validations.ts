@@ -1,9 +1,18 @@
+import { useProducts } from "../context/ProductContext";
+
+
+
+
 export const validateName = (name: string): boolean => {
     return /^.{3,80}$/.test(name.trim());
   };
+
+  export const validateUniqueName = (name: string, products: { name: string }[]): boolean => {
+    return !products.some((plant: { name: string }) => plant.name === name.trim());
+  };
   
   export const validateSubtitle = (subtitle: string): boolean => {
-    return /^.{3,80}$/.test(subtitle.trim());
+    return /^.{3,80}$/.test(subtitle.trim().toLowerCase());
   };
   
   export const validatePrice = (price: string): boolean => {
@@ -17,7 +26,7 @@ export const validateName = (name: string): boolean => {
   };
   
   export const validateDescription = (description: string): boolean => {
-    return description.trim().length <= 250;
+    return description.trim().length <= 250 && description.trim().length >= 10;
   };
   
   export const validateImageUrl = (imageUrl: string): boolean => {

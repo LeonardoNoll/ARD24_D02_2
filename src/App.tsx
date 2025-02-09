@@ -42,9 +42,7 @@ function App() {
         path="login"
         element={
           <>
-            <Header isLogin={false} />
             <Login />
-            <Footer />
           </>
         }
       />
