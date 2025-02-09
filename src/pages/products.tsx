@@ -121,7 +121,12 @@ const Products = () => {
 
               {/* Detalhes do produto */}
               <div className="p-4 w-full">
-                <h3 className="text-lg font-semibold hover:underline cursor-pointer">
+                <h3
+                  className="text-lg font-semibold hover:underline cursor-pointer"
+                  onClick={() => {
+                    window.location.href = `/products/${product.id}`;
+                  }}
+                >
                   {product.name}
                 </h3>
 

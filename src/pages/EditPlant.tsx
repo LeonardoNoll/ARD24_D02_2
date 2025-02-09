@@ -7,7 +7,7 @@ const categories = ["Indor", "Outdoor", "Terracy & Balcony", "Office Desk"];
 const EditPlant = () => {
   return (
     <>
-      <Header isLogin={false} />
+      <Header isLogin={true} />
       <main className="flex w-screen justify-center bg-slate-50 ">
         <form action="" className="grid grid-cols-2 flex-1 gap-8 p-12">
           <section className="col-span-2">

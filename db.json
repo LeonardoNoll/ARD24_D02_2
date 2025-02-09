@@ -65,6 +65,17 @@
       "description": "dsddsds",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": false
+    },
+    {
+      "id": "69d35c90-dd3d-4644-9df0-ac03677bf944",
+      "name": "Teste",
+      "subtitle": "plantaaaaa",
+      "category": "Terrace & Balcony",
+      "price": 1515,
+      "discount": 15,
+      "description": "sdsd",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": true
     }
   ]
 }
