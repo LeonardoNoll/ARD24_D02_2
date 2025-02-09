@@ -1,8 +1,7 @@
 // src/context/ProductContext.tsx
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import InvalidInputMessage from '../Components/InvalidInputMessage';
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;
