@@ -18,11 +18,11 @@ const UserConfig = () => {
             </h3>
           </section>
           <div className="input-group col-span-2">
-            <label htmlFor="plant-name">Plant Name</label>
+            <label htmlFor="plant-name">Name</label>
             <input type="text" name="name" id="name" placeholder="John Doe" />
           </div>
           <div className="input-group col-span-2">
-            <label htmlFor="plant-subtitle">Plant Subtitle</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -36,7 +36,7 @@ const UserConfig = () => {
               type="password"
               name="password"
               id="password"
-              placeholder="A majestic addition to your plant collection"
+              placeholder="*********"
             />
           </div>
           <button

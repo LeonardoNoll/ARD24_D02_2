@@ -1,10 +1,9 @@
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import Hero from "../Components/Hero";
-import StepsToTake from "../Components/StepsToTake";
-import Panel1 from "../Components/Panel1";
-import BestSelling from "../Components/BestSelling";
-import Carousel from "../Components/Carousel";
+import Hero from "../components/Hero";
+import StepsToTake from "../components/StepsToTake";
+import Panel1 from "../components/Panel1";
+import Carousel from "../components/Carousel";
 export function HomeLogoff() {
   return (
     <>
@@ -12,7 +11,6 @@ export function HomeLogoff() {
       <Hero />
       <StepsToTake />
       <Panel1 />
-      <BestSelling />
       <Carousel />
       <Footer />
     </>

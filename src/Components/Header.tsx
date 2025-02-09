@@ -9,7 +9,7 @@ function Header(props: { isLogin: boolean }) {
   const { pathname } = useLocation();
 
   return (
-    <header className="w-screen h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center">
+    <header className="w-full h-[89px] border-b-1 flex justify-between py-4 px-10 border-slate-200 items-center">
       <Link title="Home" to="/">
         <img
           src={logoGreen}
