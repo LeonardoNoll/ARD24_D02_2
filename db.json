@@ -20,7 +20,7 @@
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
       "category": "Indoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": false
+      "highlight": true
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
       "category": "Indoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": false
+      "highlight": true
     },
     {
       "id": 4,
@@ -42,7 +42,7 @@
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
       "category": "Indoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": false
+      "highlight": true
     },
     {
       "id": "95bc97dc-8aac-440f-abd5-a641b302716a",

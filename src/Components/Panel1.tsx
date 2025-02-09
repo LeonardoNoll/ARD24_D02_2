@@ -5,13 +5,13 @@ import plants3 from "../assets/image/flowers.png";
 
 const Panel1 = () => {
   return (
-    <div className="flex justify-center w-full">
-      <div className=" flex w-[1216px] justify-center mt-[104px]">
+    <div className="flex w-full ">
+      <div className=" flex w-full justify-around ">
       <div className="flex gap-[30px]">
         <img src={plants1} alt="Foto de plantas 1" />
         <img src={plants2} alt="Foto de plantas 2" />
       </div>
-      <div className=" w-[555px] h-[559px] pl-[90px] border-r-red-500">
+      <div className=" w-[555px] h-[559px] pl-[90px] border-r-red-500 " >
         <img src={plants3} alt="jardim de flores" />
         <p className="font-inter font-[400] text-[16px] text-slate-500 mt-[50px] mb-[20px] w-full leading-[24px] h-[275px]">
           Our website offers a wide array of stunning plants, ranging from
