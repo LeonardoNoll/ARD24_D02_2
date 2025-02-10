@@ -13,7 +13,7 @@
     },
     {
       "id": "2",
-      "name": "Echinocereus Cactus2",
+      "name": "Echinocereus Cactus2 ",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
       "discount": 20,
@@ -50,8 +50,8 @@
       "subtitle": "test",
       "category": "Outdoor",
       "price": 23,
-      "discount": 2,
-      "description": "dsdsd",
+      "discount": 5,
+      "description": "dsdsderfdgdfg",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": true
     },
@@ -73,9 +73,20 @@
       "category": "Terrace & Balcony",
       "price": 1515,
       "discount": 15,
-      "description": "sdsd",
+      "description": " Teste  Teste  Teste ",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": true
+    },
+    {
+      "id": "f9acb2e0-dd3a-4894-b5e5-2136be2e9b48",
+      "name": "planta adicionada",
+      "subtitle": "adicionei",
+      "category": "Terrace & Balcony",
+      "price": 10,
+      "discount": 0,
+      "description": "planta foi adicionada para venda",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": false
     }
   ]
 }
