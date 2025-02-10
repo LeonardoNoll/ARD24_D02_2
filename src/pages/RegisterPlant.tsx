@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import SidePlant from "../Components/SidePlant";
-import PlantForm from "../components/PlantForm";
+import PlantForm from "../Components/PlantForm";
 import { useProducts } from "../context/ProductContext";
 import { useState } from "react";
 
@@ -24,7 +24,7 @@ const RegisterPlant = () => {
       });
 
       if (!response.ok) throw new Error("Registration failed");
-      
+
       fetchProducts();
       navigate("/products");
     } catch (err) {
@@ -45,3 +45,4 @@ const RegisterPlant = () => {
 };
 
 export default RegisterPlant;
+
