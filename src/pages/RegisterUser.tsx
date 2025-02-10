@@ -1,8 +1,7 @@
 import eye from "../assets/image/eye.png";
-import logoGreen from "../assets/image/logo-green.svg";
 import ocult from "../assets/image/ocult.png";
 
-import { useSignUp, useUser } from "@clerk/clerk-react";
+import { useSignUp } from "@clerk/clerk-react";
 import { FormEvent, useState } from "react";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
@@ -111,7 +110,7 @@ function RegisterUser() {
               }
             />
             <InvalidInputMessage
-              validOn={!submit || nameRegex.test(formData.name)}
+              validOn={!submit || validateUserName(formData.name)}
               message={`Enter a valid first and last name`}
             />
 
@@ -128,7 +127,7 @@ function RegisterUser() {
               }
             />
             <InvalidInputMessage
-              validOn={!submit || emailRegex.test(formData.email)}
+              validOn={!submit || validateEmail(formData.email)}
               message={`Enter a valid e-mail`}
             />
 
@@ -165,7 +164,7 @@ function RegisterUser() {
               </button>
             </section>
             <InvalidInputMessage
-              validOn={!submit || passwordRegex.test(formData.password)}
+              validOn={!submit || validatePassword(formData.password)}
               message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
             />
 
