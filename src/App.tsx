@@ -11,7 +11,8 @@ import RegisterPlant from "./pages/RegisterPlant.tsx";
 import RegisterUser from "./pages/RegisterUser.tsx";
 import UserConfig from "./pages/UserConfig.tsx";
 import AboutProduct from "./pages/AboutProduct.tsx";
-
+import { Error404 } from "./pages/Error404.tsx";
+import {Error403} from "./pages/Error403.tsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="about-me" element={<UserConfig />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="register" element={<RegisterUser />} />
+      <Route path="login" element={<Login />} />
 
       <Route element={<PrivateRoute />}>
         <Route path="products/:id" element={<AboutProduct />} />
@@ -46,6 +48,8 @@ function App() {
           </>
         }
       />
+      <Route path="*" element={<Error404/>}/>
+      <Route path="/403" element={<Error403/>}/>
     </Routes>
   );
 }

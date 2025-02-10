@@ -3,16 +3,19 @@ import logoGreen from "../assets/image/logo-green.svg";
 import ocult from "../assets/image/ocult.png";
 
 import { useSignUp, useUser } from "@clerk/clerk-react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import SidePlant from "../Components/SidePlant";
 import { useNavigate } from "react-router";
+import LogoLink from "../Components/LogoLink.tsx";
+import {
+  validateEmail,
+  validatePassword,
+  validateUserName,
+} from "../utils/validations.ts";
 
 // regex
-const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
 
 function RegisterUser() {
   const { isLoaded, signUp } = useSignUp();
@@ -36,14 +39,14 @@ function RegisterUser() {
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 
-  async function submitButton(e: React.FormEvent) {
+  async function submitButton(e: FormEvent) {
     e.preventDefault();
     if (!isLoaded) return;
     if (
       !(
-        nameRegex.test(formData.name) &&
-        emailRegex.test(formData.email) &&
-        passwordRegex.test(formData.password) &&
+        validateUserName(formData.name) &&
+        validateEmail(formData.email) &&
+        validatePassword(formData.password) &&
         formData.password === formData.confirmPassword
       )
     ) {
@@ -56,15 +59,15 @@ function RegisterUser() {
         emailAddress: formData.email,
         password: formData.password,
         firstName: formData.name.split(" ")[0],
-        lastName: formData.name.split(" ")[1],
+        lastName: formData.name.split(" ").shift(),
       });
       if (signUp.createdSessionId) {
         navigate("/");
       } else {
         throw new Error("Failed to create session.");
       }
-    } catch (err: any) {
-      setError(err.errors[0].message);
+    } catch (err) {
+      // setError(err.errors[0].message);
       console.error(err);
     }
 
@@ -78,13 +81,9 @@ function RegisterUser() {
   return (
     <section className="flex h-screen">
       <section className="w-[50%]">
-        <img
-          src={logoGreen}
-          alt="planta"
-          className="w-[49px] h-[54px] ml-16 mt-4"
-        />
+        <LogoLink />
 
-        <section className="flex gap-12 flex-col max-w-[424px] w-full mt-[112px] mb-[432px] mx-auto justify-center">
+        <section className="flex gap-12 flex-col max-w-[424px] w-full mt-[78px] mb-[432px] mx-auto justify-center">
           <article className="flex flex-col gap-[5px]">
             <h1 className="h-12 font-play-display text-emerald-900 font-[700] text-[40px] leading-12">
               Register
