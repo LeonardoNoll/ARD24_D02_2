@@ -59,13 +59,16 @@ function RegisterUser() {
         firstName: formData.name.split(" ")[0],
         lastName: formData.name.split(" ").shift(),
       });
+      await signUp.prepareEmailAddressVerification({
+        strategy: "email_link",
+        redirectUrl: "http://localhost:5173/products",
+      });
       if (signUp.createdSessionId) {
         navigate("/");
       } else {
         throw new Error("Failed to create session.");
       }
     } catch (err) {
-      // setError(err.errors[0].message);
       console.error(err);
     }
 
