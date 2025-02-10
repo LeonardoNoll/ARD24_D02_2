@@ -29,7 +29,7 @@ function Login() {
     event.preventDefault();
     setSubmitted(true);
 
-    if (!isLoaded || validations.email || validations.password) {
+    if (!(isLoaded && validations.email && validations.password)) {
       setLoginFailed(true);
       return;
     }

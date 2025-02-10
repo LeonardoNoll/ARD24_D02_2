@@ -1,10 +1,11 @@
+import { useNavigate } from "react-router";
 import backgrounderror from "../assets/image/backgrounderror.png";
 
-const handleRedirect = () => {
-  window.location.href = "/";
-};
-
 export function Error403() {
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate("/login");
+  };
   return (
     <>
       <div
@@ -19,7 +20,6 @@ export function Error403() {
             <p className="font-inter display mb-10 mt-4 text-2xl text-emerald-950 w-80 text-center mx-auto">
               Access to this resource on the server is denied!{" "}
             </p>
-
               <p className="mt-4">
                 <button
                   onClick={handleRedirect}
@@ -28,7 +28,6 @@ export function Error403() {
                   Login to continue
                 </button>
               </p>
-
           </div>
         </section>
       </div>

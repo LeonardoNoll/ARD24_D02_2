@@ -17,7 +17,41 @@ import {Error403} from "./pages/Error403.tsx";
 function App() {
   return (
     <>
-    <Login/>
+      <Routes>
+      {/* entry page */}
+      <Route index element={<HomeLogoff />} />
+      <Route path="about-me" element={<UserConfig />} />
+      <Route path="about-us" element={<AboutUs />} />
+      <Route path="register" element={<RegisterUser />} />
+      <Route path="login" element={<Login />} />
+
+      <Route element={<PrivateRoute />}>
+        <Route path="products/:id" element={<AboutProduct />} />
+        <Route path="products/:id/edit" element={<EditPlant />} />
+        <Route path="products/new" element={<RegisterPlant />} />
+        <Route
+          path="products"
+          element={
+        <>
+          <Header isLogin={true} />
+          <Products />
+          <Footer />
+        </>
+          }
+        >
+        </Route>
+      </Route>
+      <Route
+        path="login"
+        element={
+          <>
+            <Login />
+          </>
+        }
+      />
+      <Route path="*" element={<Error404/>}/>
+      <Route path="/403" element={<Error403/>}/>
+    </Routes>
     </>
   );
 }

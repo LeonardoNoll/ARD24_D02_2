@@ -1,11 +1,11 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Footer from '../Components/Footer';
-import Header from '../Components/Header';
-import useFetchProduct from '../hooks/useFetchProduct';
-import SidePlant from '../Components/SidePlant';
-import PlantForm from '../components/PlantForm';
-import { useProducts } from '../context/ProductContext';
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
+import useFetchProduct from "../hooks/useFetchProduct";
+import SidePlant from "../Components/SidePlant";
+import PlantForm from "../Components/PlantForm";
+import { useProducts } from "../context/ProductContext";
 
 const EditPlant: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -27,7 +27,7 @@ const EditPlant: React.FC = () => {
       });
 
       if (!response.ok) throw new Error("Update failed");
-      
+
       fetchProducts();
       navigate("/products");
     } catch (err) {
@@ -51,9 +51,9 @@ const EditPlant: React.FC = () => {
     <>
       <Header isLogin={true} />
       <main className="flex w-screen justify-center bg-slate-50 ">
-        <PlantForm 
-          initialData={initialFormData} 
-          onSubmit={handleSubmit} 
+        <PlantForm
+          initialData={initialFormData}
+          onSubmit={handleSubmit}
           error={submitError}
           isEdit={true}
         />
@@ -65,3 +65,4 @@ const EditPlant: React.FC = () => {
 };
 
 export default EditPlant;
+

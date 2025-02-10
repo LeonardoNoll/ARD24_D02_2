@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import InvalidInputMessage from "../components/InvalidInputMessage";
+import InvalidInputMessage from "../Components/InvalidInputMessage";
+import { useProducts } from "../context/ProductContext";
 import {
-  validateName,
-  validateSubtitle,
-  validatePrice,
-  validateDiscount,
   validateDescription,
+  validateDiscount,
   validateImageUrl,
+  validateName,
+  validatePrice,
+  validateSubtitle,
   validateUniqueName,
 } from "../utils/validations";
-import { useProducts } from "../context/ProductContext";
-
 
 const categories = ["Indoor", "Outdoor", "Terrace & Balcony", "Office Desk"];
 
@@ -32,7 +31,12 @@ interface PlantFormProps {
   isEdit?: boolean;
 }
 
-const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormProps) => {
+const PlantForm = ({
+  initialData,
+  onSubmit,
+  error,
+  isEdit = false,
+}: PlantFormProps) => {
   const { products } = useProducts();
   const [formData, setFormData] = useState(
     initialData || {
@@ -44,18 +48,23 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
       description: "",
       image: "",
       highlight: false,
-    }
+    },
   );
 
   const [submitted, setSubmitted] = useState(false);
-  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
+    {},
+  );
 
   const handleBlur = (field: string) => {
     setTouchedFields((prev) => ({ ...prev, [field]: true }));
   };
 
   const validations = {
-    name: isEdit? validateName(formData.name) : validateName(formData.name) && validateUniqueName(formData.name, products),
+    name: isEdit
+      ? validateName(formData.name)
+      : validateName(formData.name) &&
+        validateUniqueName(formData.name, products),
     subtitle: validateSubtitle(formData.subtitle),
     price: validatePrice(formData.price),
     discount: validateDiscount(formData.discount),
@@ -76,7 +85,8 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
         const updatedData = {
           ...formData,
           id: isEdit ? formData.id : uuidv4(),
-          image: isEdit && !formData.image ? initialData?.image : formData.image,
+          image:
+            isEdit && !formData.image ? initialData?.image : formData.image,
         };
 
         await onSubmit(updatedData);
@@ -87,12 +97,18 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-2 flex-1 gap-8 p-12">
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-2 flex-1 gap-8 p-12"
+    >
       <section className="col-span-2">
         <h1 className="font-play-display text-5xl font-bold mb-3 text-emerald-900">
           {isEdit ? "Edit Plant" : "Register Plant"}
         </h1>
-        <h3>Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa neque.</h3>
+        <h3>
+          Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa
+          neque.
+        </h3>
         {error && <p className="text-red-600 mb-4">{error}</p>}
       </section>
 
@@ -121,7 +137,9 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           id="plant-subtitle"
           value={formData.subtitle}
           placeholder="A majestic addition to your plant collection"
-          onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, subtitle: e.target.value })
+          }
           onBlur={() => handleBlur("subtitle")}
         />
         <InvalidInputMessage
@@ -136,7 +154,9 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
         <select
           id="category"
           value={formData.category}
-          onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, category: e.target.value })
+          }
         >
           {categories.map((category, index) => (
             <option key={index} value={category}>
@@ -171,7 +191,9 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           id="discount-percentage"
           value={formData.discount}
           placeholder="20%"
-          onChange={(e) => setFormData({ ...formData, discount: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, discount: e.target.value })
+          }
           onBlur={() => handleBlur("discount")}
         />
         <InvalidInputMessage
@@ -189,7 +211,9 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           id="description"
           value={formData.description}
           placeholder="Ladyfinger Cactus..."
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, description: e.target.value })
+          }
           onBlur={() => handleBlur("description")}
         />
         <InvalidInputMessage
@@ -220,7 +244,9 @@ const PlantForm = ({ initialData, onSubmit, error, isEdit = false }: PlantFormPr
           type="checkbox"
           id="highlight-product"
           checked={formData.highlight}
-          onChange={(e) => setFormData({ ...formData, highlight: e.target.checked })}
+          onChange={(e) =>
+            setFormData({ ...formData, highlight: e.target.checked })
+          }
           className="mr-2 size-4 border"
         />
         <label htmlFor="highlight-product">Highlight product</label>
