@@ -11,6 +11,7 @@ import {
 import InvalidInputMessage from "../Components/InvalidInputMessage";
 import eye from "../assets/image/eye.png";
 import ocult from "../assets/image/ocult.png";
+import InputConfirm from "../Components/InputConfirm";
 
 const UserConfig = () => {
   const { isLoaded, user } = useUser();
@@ -18,24 +19,29 @@ const UserConfig = () => {
   const [name, setName] = useState(
     isLoaded ? user?.firstName + " " + user?.lastName : "",
   );
+  const [showNameSucess, setShowNameSuccess] = useState(false);
   const [email, setEmail] = useState(
     isLoaded ? user?.primaryEmailAddress?.emailAddress : "",
   );
+  const [showEmailSucess, setShowEmailSuccess] = useState(false);
   const [password, setPassword] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-
+  const [showPasswordSuccess, setShowPasswordSuccess] = useState(false);
   const validations = {
     name: validateUserName(name),
-    email: validateEmail(email),
+    email: validateEmail(email!),
     password: validatePassword(password),
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmit(true);
+    setShowNameSuccess(false);
+    setShowEmailSuccess(false);
+    setShowPasswordSuccess(false);
 
     if (!isLoaded || !user) return;
 
@@ -45,6 +51,7 @@ const UserConfig = () => {
           firstName: name.split(" ")[0],
           lastName: name.split(" ")[1],
         });
+        setShowNameSuccess(true);
       } catch (error) {
         console.log(error);
       }
@@ -57,7 +64,7 @@ const UserConfig = () => {
       else {
         try {
           const newEmail = await user.createEmailAddress({
-            email: email,
+            email: email!,
           });
           await newEmail.prepareVerification({
             strategy: "email_link",
@@ -68,6 +75,7 @@ const UserConfig = () => {
           console.log(error);
         }
       }
+      setShowEmailSuccess(true);
     }
 
     if (validations.password)
@@ -76,7 +84,7 @@ const UserConfig = () => {
           newPassword: password,
           currentPassword: currentPassword,
         });
-        console.log("password changed");
+        setShowPasswordSuccess(true);
       } catch (error) {
         console.log(error);
       }
@@ -136,7 +144,7 @@ const UserConfig = () => {
               value={email}
             />
             <InvalidInputMessage
-              validOn={!submit || validateEmail(email) || email === ""}
+              validOn={!submit || validateEmail(email!) || email === ""}
               message={`Enter a valid e-mail`}
             />
           </div>
@@ -226,10 +234,21 @@ const UserConfig = () => {
           </div>
           <button
             type="submit"
-            className="bg-emerald-900 focus:bg-emerald-950 rounded-md p-2 font-semibold text-[#FCFCFC]"
+            className="bg-emerald-900 focus:bg-emerald-950 col-span-2 rounded-md p-2 font-semibold text-[#FCFCFC]"
           >
             Edit account
           </button>
+          <div className="flex flex-col gap-2 col-span-2">
+            <InputConfirm
+              showOn={showEmailSucess}
+              message="Email update confirmation sent to you new e-mail!"
+            />
+            <InputConfirm showOn={showNameSucess} message="Name updated!" />
+            <InputConfirm
+              showOn={showPasswordSuccess}
+              message="Password updated!"
+            />
+          </div>
         </form>
         <SidePlant />
       </main>
