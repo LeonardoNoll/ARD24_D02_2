@@ -16,6 +16,7 @@ import {Error403} from "./pages/Error403.tsx";
 
 function App() {
   return (
+    <>
     <Routes>
       {/* entry page */}
       <Route index element={<HomeLogoff />} />
@@ -51,6 +52,7 @@ function App() {
       <Route path="*" element={<Error404/>}/>
       <Route path="/403" element={<Error403/>}/>
     </Routes>
+    </>
   );
 }
 
