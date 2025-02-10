@@ -28,7 +28,6 @@ export function Error403() {
                   Login to continue
                 </button>
               </p>
-
           </div>
         </section>
       </div>
