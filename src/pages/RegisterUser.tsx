@@ -35,7 +35,8 @@ function RegisterUser() {
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
 
   async function submitButton(e: FormEvent) {
     e.preventDefault();
@@ -63,6 +64,7 @@ function RegisterUser() {
         strategy: "email_link",
         redirectUrl: "http://localhost:5173/products",
       });
+      setShowMessage(true);
       if (signUp.createdSessionId) {
         navigate("/");
       } else {
@@ -210,14 +212,16 @@ function RegisterUser() {
               message={`Passwords are different`}
             />
 
-            {/* Exibe a mensagem apenas se showMessage for true */}
-            {showMessage && <InputConfirm message="Registered successfully" />}
             <button
               className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6 mt-8"
               type="submit"
             >
               Register
             </button>
+            <InputConfirm
+              showOn={showMessage}
+              message="Registered successfully, please check your email to verify."
+            />
           </form>
         </section>
       </section>
@@ -229,4 +233,3 @@ function RegisterUser() {
 }
 
 export default RegisterUser;
-
