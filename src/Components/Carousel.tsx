@@ -104,7 +104,7 @@ const Carousel: React.FC = () => {
                       />
                     </div>
                     <div className="p-4 w-full">
-                      <h3 className="text-lg font-semibold font-inter text-slate-600 hover:underline cursor-pointer">
+                      <h3 className="text-lg font-semibold font-inter text-slate-600 hover:underline cursor-pointer" onClick={() => window.location.href = `/products/${product.id}`}>
                         {product.name}
                       </h3>
                       <p className="text-sm font-inter text-slate-400">
