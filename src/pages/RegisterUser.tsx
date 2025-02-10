@@ -35,8 +35,7 @@ function RegisterUser() {
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
   async function submitButton(e: FormEvent) {
     e.preventDefault();
@@ -228,12 +227,3 @@ function RegisterUser() {
 
 export default RegisterUser;
 
-////apaga as mensagens de erro
-//setTimeout(() => {
-//  setSubmit(false);
-//}, 10);
-//
-////esconde a mensagem de 1.8seg
-//setTimeout(() => {
-//  setShowMessage(false);
-//}, 1800);
