@@ -228,12 +228,3 @@ function RegisterUser() {
 
 export default RegisterUser;
 
-////apaga as mensagens de erro
-//setTimeout(() => {
-//  setSubmit(false);
-//}, 10);
-//
-////esconde a mensagem de 1.8seg
-//setTimeout(() => {
-//  setShowMessage(false);
-//}, 1800);
