@@ -5,12 +5,15 @@ import InvalidInputMessage from "../Components/InvalidInputMessage";
 import LogoLink from "../Components/LogoLink.tsx";
 import SidePlant from "../Components/SidePlant.tsx";
 import { validateEmail, validatePassword } from "../utils/validations";
+import eye from "../assets/image/eye.png";
+import ocult from "../assets/image/ocult.png";
 
 function Login() {
   const { isLoaded, signIn, setActive } = useSignIn();
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const [loginFailed, setLoginFailed] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -85,8 +88,9 @@ function Login() {
             <label className="font-inter font-medium text-[16px]  leading-5 text-slate-700">
               Password
             </label>
+            <section className=" w-full relative">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               className="input-group"
               onChange={(e) =>
@@ -94,6 +98,25 @@ function Login() {
               }
               value={formData.password}
             />
+            <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <img
+                    src={ocult}
+                    alt="icon ocult"
+                    className="absolute w-[32px]  right-2 top-0.5"
+                  />
+                ) : (
+                  <img
+                    src={eye}
+                    alt="icon open eye"
+                    className="absolute w-[36px]  right-2 top-0.5"
+                  />
+                )}
+              </button>
+            </section>
             <InvalidInputMessage
               validOn={!submitted || formData.password.length >= 8}
               message="Password must have at least 8 characters"
