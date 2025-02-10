@@ -1,5 +1,3 @@
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
 import backgrounderror from "../assets/image/backgrounderror.png";
 
 const handleRedirect= () => {
