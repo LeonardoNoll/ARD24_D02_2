@@ -21,6 +21,7 @@ const UserConfig = () => {
     user?.primaryEmailAddress?.emailAddress || "",
   );
   const [password, setPassword] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const validations = {
     name: validateUserName(name),
     email: validateEmail(email),
@@ -28,27 +29,51 @@ const UserConfig = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmit(true);
 
-    if (!(isLoaded && user && validations.email && validations.password))
-      return;
+    if (!isLoaded || !user) return;
 
-    try {
-      await user.update({
-        firstName: name,
-        lastName: name,
-      });
-
-      if (email !== user.primaryEmailAddress?.emailAddress) {
-        const newEmail = await user.createEmailAddress({ email: email });
-        user.update({ primaryEmailAddressId: newEmail.id });
+    if (validations.name)
+      try {
+        await user.update({
+          firstName: name.split(" ")[0],
+          lastName: name.split(" ")[1],
+        });
+      } catch (error) {
+        console.log(error);
       }
-
-      if (password) await user.updatePassword({ newPassword: password });
-
-      await user.reload();
-    } catch (error) {
-      console.log(error);
+    if (validations.email && email !== user.primaryEmailAddress?.emailAddress) {
+      const emailAlreadyExists = user.emailAddresses.find(
+        (existingEmail) => existingEmail.emailAddress === email,
+      );
+      if (emailAlreadyExists)
+        user.update({ primaryEmailAddressId: emailAlreadyExists.id });
+      else {
+        try {
+          const newEmail = await user.createEmailAddress({
+            email: email,
+          });
+          await newEmail.prepareVerification({
+            strategy: "email_link",
+            redirectUrl: "localhost:5173/",
+          });
+          user.update({ primaryEmailAddressId: newEmail.id });
+        } catch (error) {
+          console.log(error);
+        }
+      }
     }
+
+    if (validations.password)
+      try {
+        await user.updatePassword({
+          newPassword: password,
+          currentPassword: currentPassword,
+        });
+        console.log("sucesse");
+      } catch (error) {
+        console.log(error);
+      }
   };
   return (
     <>
@@ -78,7 +103,7 @@ const UserConfig = () => {
               onChange={(e) => setName(e.target.value)}
             />
             <InvalidInputMessage
-              validOn={!submit || validateUserName(name)}
+              validOn={!submit || validateUserName(name) || name === ""}
               message={`Enter a valid first and last name`}
             />
           </div>
@@ -93,7 +118,7 @@ const UserConfig = () => {
               value={email}
             />
             <InvalidInputMessage
-              validOn={!submit || validateEmail(email)}
+              validOn={!submit || validateEmail(email) || email === ""}
               message={`Enter a valid e-mail`}
             />
           </div>
@@ -108,15 +133,32 @@ const UserConfig = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <InvalidInputMessage
-              validOn={!submit || validatePassword(password)}
+              validOn={!submit || validatePassword(password) || password === ""}
+              message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
+            />
+          </div>
+          <div className="input-group col-span-2">
+            <label htmlFor="currentPassword">Current Password</label>
+            <input
+              type="password"
+              name="currentPassword"
+              id="currentPassword"
+              placeholder="*********"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+            />
+            <InvalidInputMessage
+              validOn={
+                !submit || validatePassword(currentPassword) || password === ""
+              }
               message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
             />
           </div>
           <button
             type="submit"
-            className="bg-emerald-900 rounded-md p-2 font-semibold text-[#FCFCFC]"
+            className="bg-emerald-900 focus:bg-emerald-950 rounded-md p-2 font-semibold text-[#FCFCFC]"
           >
-            Save To Edit Plant
+            Edit account
           </button>
         </form>
         <SidePlant />
