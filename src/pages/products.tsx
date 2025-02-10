@@ -111,7 +111,7 @@ const Products = () => {
               </span>
 
               {/* Imagem do produto */}
-              <div className="w-full aspect-square overflow-hidden flex justify-center items-center">
+              <div className="w-full aspect-square overflow-hidden flex justify-center items-center text-slate-600">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -120,12 +120,17 @@ const Products = () => {
               </div>
 
               {/* Detalhes do produto */}
-              <div className="p-4 w-full">
-                <h3 className="text-lg font-semibold hover:underline cursor-pointer">
+              <div className="p-4 w-full font-inter">
+                <h3
+                  className="text-lg font-semibold hover:underline cursor-pointer text-slate-600"
+                  onClick={() => {
+                    window.location.href = `/products/${product.id}`;
+                  }}
+                >
                   {product.name}
                 </h3>
 
-                <p className="text-gray-600 mt-2">$ {product.price.toFixed(2)}</p>
+                <p className="text-slate-500 mt-2">$ {product.price.toFixed(2)}</p>
                 
               </div>
             </div>

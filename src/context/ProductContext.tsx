@@ -8,6 +8,9 @@ export interface Product {
   category: string;
   image: string;
   highlight: boolean;
+  description: string;
+  subtitle: string;
+  discount: number;
 }
 
 interface ProductContextType {
