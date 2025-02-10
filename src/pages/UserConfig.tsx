@@ -16,10 +16,10 @@ const UserConfig = () => {
   const { isLoaded, user } = useUser();
   const [submit, setSubmit] = useState(false);
   const [name, setName] = useState(
-    user?.firstName + " " + user?.lastName || "",
+    isLoaded ? user?.firstName + " " + user?.lastName : "",
   );
   const [email, setEmail] = useState(
-    user?.primaryEmailAddress?.emailAddress || "",
+    isLoaded ? user?.primaryEmailAddress?.emailAddress : "",
   );
   const [password, setPassword] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
@@ -155,7 +155,7 @@ const UserConfig = () => {
                 placeholder="••••••••"
                 className="input-group"
                 value={password}
-                onChange={(e) => setCurrentPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -190,7 +190,7 @@ const UserConfig = () => {
             </label>
             <section className=" w-full relative">
               <input
-                type={showPassword ? "text" : "password"}
+                type={showCurrentPassword ? "text" : "password"}
                 name="currentPassword"
                 id="currentPassword"
                 placeholder="••••••••"
@@ -202,7 +202,7 @@ const UserConfig = () => {
                 type="button"
                 onClick={() => setShowCurrentPassword(!showPassword)}
               >
-                {showPassword ? (
+                {showCurrentPassword ? (
                   <img
                     src={ocult}
                     alt="icon ocult"
