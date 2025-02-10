@@ -12,10 +12,8 @@ import InvalidInputMessage from "../Components/InvalidInputMessage";
 import eye from "../assets/image/eye.png";
 import ocult from "../assets/image/ocult.png";
 
-
 const UserConfig = () => {
   const { isLoaded, user } = useUser();
-  const clerk = useClerk();
   const [submit, setSubmit] = useState(false);
   const [name, setName] = useState(
     user?.firstName + " " + user?.lastName || "",
@@ -24,10 +22,11 @@ const UserConfig = () => {
     user?.primaryEmailAddress?.emailAddress || "",
   );
   const [password, setPassword] = useState("");
- 
+  const [currentPassword, setCurrentPassword] = useState("");
 
-    //estados para ver senhas enquanto estão no input
-    const [showPassword, setShowPassword] = useState<boolean>(false);
+  //estados para ver senhas enquanto estão no input
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
 
   const validations = {
     name: validateUserName(name),
@@ -74,9 +73,10 @@ const UserConfig = () => {
     if (validations.password)
       try {
         await user.updatePassword({
-          newPassword: password
+          newPassword: password,
+          currentPassword: currentPassword,
         });
-        console.log("sucesse");
+        console.log("password changed");
       } catch (error) {
         console.log(error);
       }
@@ -99,7 +99,12 @@ const UserConfig = () => {
             </p>
           </section>
           <div className="input-group col-span-2">
-            <label htmlFor="plant-name" className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700">Name</label>
+            <label
+              htmlFor="plant-name"
+              className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700"
+            >
+              Name
+            </label>
             <input
               type="text"
               name="name"
@@ -115,7 +120,12 @@ const UserConfig = () => {
             />
           </div>
           <div className="input-group col-span-2">
-            <label htmlFor="email" className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700">Email</label>
+            <label
+              htmlFor="email"
+              className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -131,18 +141,23 @@ const UserConfig = () => {
             />
           </div>
           <div className="input-group col-span-2">
-            <label htmlFor="password" className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700">Password</label>
+            <label
+              htmlFor="password"
+              className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700"
+            >
+              Password
+            </label>
             <section className=" w-full relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              className="input-group"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                className="input-group"
+                value={password}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+              />
+              <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
               >
@@ -160,14 +175,55 @@ const UserConfig = () => {
                   />
                 )}
               </button>
-            
             </section>
             <InvalidInputMessage
               validOn={!submit || validatePassword(password) || password === ""}
               message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
             />
           </div>
-          
+          <div className="input-group col-span-2">
+            <label
+              htmlFor="currentPassword"
+              className="font-inter font-weight[500] text-[18px] leading-[21px] text-slate-700"
+            >
+              Current Password
+            </label>
+            <section className=" w-full relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="currentPassword"
+                id="currentPassword"
+                placeholder="••••••••"
+                className="input-group"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() => setShowCurrentPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <img
+                    src={ocult}
+                    alt="icon ocult"
+                    className="absolute w-[32px]  right-2 top-0.5"
+                  />
+                ) : (
+                  <img
+                    src={eye}
+                    alt="icon open eye"
+                    className="absolute w-[36px]  right-2 top-0.5"
+                  />
+                )}
+              </button>
+            </section>
+            <InvalidInputMessage
+              validOn={
+                !submit || validatePassword(currentPassword) || password === ""
+              }
+              message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
+            />
+          </div>
           <button
             type="submit"
             className="bg-emerald-900 focus:bg-emerald-950 rounded-md p-2 font-semibold text-[#FCFCFC]"
