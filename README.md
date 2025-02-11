@@ -85,7 +85,5 @@ Foram aplicados conhecimentos por meio das tecnologias HTML, CSS, Tailwind, Type
                 <td><b>Jailson de Souza</b></td>
                 <td><a href="https://github.com/jailsoncompass" target="_blank">https://github.com/jailsoncompass</a></td>
             </tr>
-            
-            
         </tbody>
     </table>
