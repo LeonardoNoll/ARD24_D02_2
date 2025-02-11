@@ -7,7 +7,7 @@ import Carousel from "../Components/Carousel";
 export default function HomeLogoff() {
   return (
     <>
-      <Header isLogin={false} />
+      <Header />
       <Hero />
       <StepsToTake />
       <Panel1 />

@@ -35,7 +35,7 @@ function App() {
             path="products"
             element={
               <>
-                <Header isLogin={true} />
+                <Header />
                 <Products />
                 <Footer />
               </>
