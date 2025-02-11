@@ -7,7 +7,7 @@ import SidePlant from "../Components/SidePlant.tsx";
 import { validateEmail, validatePassword } from "../utils/validations";
 import eye from "../assets/image/eye.png";
 import ocult from "../assets/image/ocult.png";
-
+import { Link } from "react-router-dom";
 function Login() {
   const { isLoaded, signIn, setActive } = useSignIn();
   const navigate = useNavigate();
@@ -89,16 +89,16 @@ function Login() {
               Password
             </label>
             <section className=" w-full relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="••••••••"
-              className="input-group"
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              value={formData.password}
-            />
-            <button
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                className="input-group"
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                value={formData.password}
+              />
+              <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
               >
@@ -139,6 +139,17 @@ function Login() {
             >
               Login
             </button>
+
+            <p className="font-inter text-[16px] leading-6 text-emerald-900 hover:font-medium">
+              Not registered? <Link
+              to="/register"
+              className="hover:underline hover:cursor-pointer"
+            >
+              Register here
+            </Link>
+            </p>
+            
+
             <InvalidInputMessage
               validOn={!loginFailed}
               message="Invalid e-mail or password"
