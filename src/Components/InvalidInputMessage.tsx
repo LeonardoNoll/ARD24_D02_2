@@ -9,7 +9,7 @@ const InvalidInputMessage = ({
   message: string;
 }) => {
   return (
-    <p className={validOn ? "text-sm invisible" : "text-sm text-red-700 "}>
+    <p className={validOn ? "text-sm hidden" : "text-sm text-red-700 "}>
       {message}
     </p>
   );
