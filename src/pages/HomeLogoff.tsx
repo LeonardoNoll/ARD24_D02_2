@@ -4,7 +4,7 @@ import Hero from "../Components/Hero";
 import StepsToTake from "../Components/StepsToTake";
 import Panel1 from "../Components/Panel1";
 import Carousel from "../Components/Carousel";
-export function HomeLogoff() {
+export default function HomeLogoff() {
   return (
     <>
       <Header isLogin={false} />

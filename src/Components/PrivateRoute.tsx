@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/clerk-react";
 import { Outlet } from "react-router-dom";
-import { Error403 } from "../pages/Error403";
+import Error403 from "../pages/Error403";
 
 export default function PrivateRoute() {
   const { isSignedIn } = useUser();
