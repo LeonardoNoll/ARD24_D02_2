@@ -1,6 +1,6 @@
 import eye from "../assets/image/eye.png";
 import ocult from "../assets/image/ocult.png";
-
+import { Link } from "react-router-dom";
 import { useSignUp } from "@clerk/clerk-react";
 import { FormEvent, useState } from "react";
 import InputConfirm from "../Components/InputConfirm.tsx";
@@ -35,7 +35,8 @@ function RegisterUser() {
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
 
   async function submitButton(e: FormEvent) {
     e.preventDefault();
@@ -215,6 +216,15 @@ function RegisterUser() {
             >
               Register
             </button>
+            <p className="font-inter text-[16px] leading-6 text-emerald-900 hover:font-medium mt-1">
+              Already registered?{" "}
+              <Link
+                to="/login"
+                className="hover:underline hover:cursor-pointer"
+              >
+                Login here
+              </Link>
+            </p>
           </form>
         </section>
       </section>
@@ -226,4 +236,3 @@ function RegisterUser() {
 }
 
 export default RegisterUser;
-
