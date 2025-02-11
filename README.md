@@ -1,50 +1,91 @@
-# React + TypeScript + Vite
+# Plant Peace 🪴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![alt text](image.png)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Sobre o Projeto 📄
 
-## Expanding the ESLint configuration
+Este repositório faz parte do desafio 2 do Programa de Bolsas da Compass UOL de front-end. O desafio consiste em desenvolver um e-commerce de floricultura intitulado como Plant Peace.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Funcionalidades ✨
 
-- Configure the top-level `parserOptions` property like this:
+Foram aplicados conhecimentos por meio das tecnologias HTML, CSS, Tailwind, TypeScript, React, Clerk e JSON para estruturar um sistema visual e interativo que permitisse realizar algumas funcionalidades, tais como: login e registro de usuários, cadastro e edição de produtos, bem como a pesquisa e classificação dos mesmos por meio de categorias no catálogo.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tecnologias Usadas 🛠️
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Como Rodar o Projeto Localmente 🚀
+
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/LeonardoNoll/ARD24_D02_2.git
+   ```
+
+2. Navegue até o diretório do projeto:
+   ```sh
+   cd ARD24_D02_2
+   ```
+3. Instale as dependências:
+  
+    Dependências
+   ```sh
+   npm install
+   ```
+
+    Acesso aos registros
+   ```sh
+   npm run server
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+   ```sh
+   npm run dev
+   ```
+
+## Colaboradores 🤝
+<table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>GitHub</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Adércio Barbuio Junior </b></td>
+                <td><a href="https://github.com/barbuiojr" target="_blank">https://github.com/barbuiojr</a></td>
+            </tr>
+            <tr>
+                <td><b>Cristian Doring Molon</b></td>
+                <td><a href="https://github.com/cristiandoring" target="_blank">https://github.com/cristiandoring</a></td>
+            </tr>
+            <tr>
+                <td><b>Felipe Cirne da Silva </b></td>
+                <td><a href="https://github.com/felpscirne" target="_blank">https://github.com/felpscirne</a></td>
+            </tr>
+            <tr>
+                <td><b>Leonardo Noll Cruz </b></td>
+                <td><a href="https://github.com/LeonardoNoll" target="_blank">https://github.com/LeonardoNoll</a></td>
+            </tr>
+            <tr>
+                <td><b>Rayanne Albuquerque Marques </b></td>
+                <td><a href="https://github.com/Artemis-Rayo" target="_blank">https://github.com/Artemis-Rayo</a></td>
+            </tr>
+            <tr>
+                <td><b>Edson Moreira da Costa Filho</b></td>
+                <td><a href="https://github.com/devedsoncosta" target="_blank">https://github.com/devedsoncosta</a></td>
+            </tr>
+            <tr>
+                <td><b>Hewerton Adao da Paz</b></td>
+                <td><a href="https://github.com/Hewerton80" target="_blank">https://github.com/Hewerton80</a></td>
+            </tr>
+             <tr>
+                <td><b>Jailson de Souza</b></td>
+                <td><a href="https://github.com/jailsoncompass" target="_blank">https://github.com/jailsoncompass</a></td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
