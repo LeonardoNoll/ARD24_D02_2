@@ -2,7 +2,7 @@ import { useState } from "react";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import SidePlant from "../Components/SidePlant";
-import { useClerk, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import {
   validateUserName,
   validateEmail,
