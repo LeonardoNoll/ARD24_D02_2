@@ -8,11 +8,7 @@ const InvalidInputMessage = ({
   validOn: boolean;
   message: string;
 }) => {
-  return (
-    <p className={validOn ? "text-sm invisible" : "text-sm text-red-700 "}>
-      {message}
-    </p>
-  );
+  return validOn ? null : <p className="text-sm text-red-700 ">{message}</p>;
 };
 
 export default InvalidInputMessage;
