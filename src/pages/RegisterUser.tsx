@@ -58,7 +58,7 @@ function RegisterUser() {
         emailAddress: formData.email,
         password: formData.password,
         firstName: formData.name.split(" ")[0],
-        lastName: formData.name.split(" ").shift(),
+        lastName: formData.name.split(" ").slice(1).join(" "),
       });
       await signUp.prepareEmailAddressVerification({
         strategy: "email_link",

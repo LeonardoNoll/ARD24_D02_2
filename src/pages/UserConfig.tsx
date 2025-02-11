@@ -49,7 +49,7 @@ const UserConfig = () => {
       try {
         await user.update({
           firstName: name.split(" ")[0],
-          lastName: name.split(" ")[1],
+          lastName: name.split(" ").slice(1).join(" "),
         });
         setShowNameSuccess(true);
       } catch (error) {
