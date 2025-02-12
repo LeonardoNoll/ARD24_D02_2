@@ -54,7 +54,7 @@ const Products = () => {
           </li>
           <li
             className={`cursor-pointer p-2 text-left rounded-lg text-slate-500`}
-            onClick={() => handleCategoryChange('Terracy & Balcony')}
+            onClick={() => handleCategoryChange('Terrace & Balcony')}
           >
             Terrace & Balcony
           </li>
@@ -129,8 +129,14 @@ const Products = () => {
                 >
                   {product.name}
                 </h3>
-
-                <p className="text-slate-500 mt-2">$ {product.price.toFixed(2)}</p>
+                {product.discount > 0 ? (
+                    <div className="flex items-center space-x-2">
+                    <p className="text-slate-500 mt-2 ">${product.discountedPrice.toFixed(2)}</p>
+                    <p className="text-slate-400 mt-2 line-through mr-2">${product.price.toFixed(2)}</p>
+                  </div>
+                ) : (
+                  <p className="text-slate-500 mt-2">${product.price.toFixed(2)}</p>
+                )}
                 
               </div>
             </div>

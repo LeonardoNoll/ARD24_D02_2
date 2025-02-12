@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Footer from "../Components/Footer";
-import Header from "../Components/Header";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import useFetchProduct from "../hooks/useFetchProduct";
-import SidePlant from "../Components/SidePlant";
-import PlantForm from "../Components/PlantForm";
+import SidePlant from "../components/SidePlant";
+import PlantForm from "../components/PlantForm";
 import { useProducts } from "../context/ProductContext";
 
 const EditPlant: React.FC = () => {
@@ -13,6 +13,7 @@ const EditPlant: React.FC = () => {
   const { fetchProducts } = useProducts();
   const navigate = useNavigate();
   const [submitError, setSubmitError] = React.useState("");
+  
 
   const handleSubmit = async (updatedProduct: any) => {
     try {
@@ -29,7 +30,9 @@ const EditPlant: React.FC = () => {
       if (!response.ok) throw new Error("Update failed");
 
       fetchProducts();
-      navigate("/products");
+      setTimeout(() => {
+        navigate(`/products/${id}`);
+      }, 2000);
     } catch (err) {
       setSubmitError("Error updating plant. Please try again.");
     }
