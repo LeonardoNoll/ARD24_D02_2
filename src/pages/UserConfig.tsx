@@ -250,7 +250,9 @@ const UserConfig = () => {
             />
           </div>
         </form>
-        <SidePlant />
+        <div className="flex-1">
+          <SidePlant />
+        </div>
       </main>
       <Footer />
     </>
