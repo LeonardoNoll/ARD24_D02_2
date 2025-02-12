@@ -6,7 +6,7 @@ const StepsToTake = () => {
       <div className="justify-center w-full flex flex-col gap-[80px] mt-[148px]">
         <div className="text-center">
             <h1 className="font-play-display text-emerald-900 text-[40px] font-[700]">Steps to take care of your plants</h1>
-            <p className="font-inter font-[400] text-[16px] text-slate-500 w-[682px] text-center m-[auto] mt-[20px] mb-[80px]">By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants.</p>
+            <p className="font-inter font-[400] text-[16px] text-slate-500 w-[682px] text-center m-[auto] mt-[10px] mb-[20px]">By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants.</p>
         </div>
         <div className="flex justify-around" >
             <div className="text-center w-[373px]">
