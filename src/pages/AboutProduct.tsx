@@ -71,7 +71,7 @@ const AboutProduct: React.FC = () => {
             </div>
           </article>
           </div>
-          <SidePlant />
+          <SidePlant/>
             </main>
        <Footer />
     </>
