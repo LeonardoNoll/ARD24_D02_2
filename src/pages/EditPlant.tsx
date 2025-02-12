@@ -53,13 +53,17 @@ const EditPlant: React.FC = () => {
     <>
       <Header />
       <main className="flex w-screen justify-center bg-slate-50 ">
-        <PlantForm
-          initialData={initialFormData}
-          onSubmit={handleSubmit}
-          error={submitError}
-          isEdit={true}
-        />
-        <SidePlant />
+        <div className="flex-1">
+          <PlantForm
+            initialData={initialFormData}
+            onSubmit={handleSubmit}
+            error={submitError}
+            isEdit={true}
+          />
+        </div>
+        <div className="flex-1">
+          <SidePlant />
+        </div>
       </main>
       <Footer />
     </>

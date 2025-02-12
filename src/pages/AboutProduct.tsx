@@ -77,7 +77,9 @@ const AboutProduct: React.FC = () => {
             </div>
           </article>
         </div>
-        <SidePlant />
+        <div className="flex-1">
+          <SidePlant />
+        </div>
       </main>
       <Footer />
     </>
@@ -85,4 +87,3 @@ const AboutProduct: React.FC = () => {
 };
 
 export default AboutProduct;
-
