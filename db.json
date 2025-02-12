@@ -67,7 +67,7 @@
       "category": "Indoor",
       "price": 12212,
       "discount": 20,
-      "description": "dsddsddsdsdssdssdsds",
+      "description": "planta foi editada",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": false,
       "discountedPrice": 9769.6
@@ -107,6 +107,18 @@
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": true,
       "discountedPrice": 1190
+    },
+    {
+      "id": "eb47449b-9f2b-4419-9711-c7cf35200699",
+      "name": "Planta cadastrada",
+      "subtitle": "Versão 3",
+      "category": "Terrace & Balcony",
+      "price": 40,
+      "discount": 0,
+      "description": "Cadastro da planta versão 3",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": false,
+      "discountedPrice": 40
     }
   ]
 }

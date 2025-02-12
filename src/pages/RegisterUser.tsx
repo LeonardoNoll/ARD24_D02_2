@@ -206,7 +206,7 @@ function RegisterUser() {
             />
 
             <button
-              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6"
+              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6 mt-8"
               type="submit"
             >
               Register
