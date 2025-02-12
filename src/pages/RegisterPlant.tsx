@@ -41,12 +41,16 @@ const RegisterPlant = () => {
     <>
       <Header />
       <main className="flex w-screen justify-center bg-slate-50 ">
-        <PlantForm onSubmit={handleSubmit} error={error} />
-        <InputConfirm
-              showOn={showMessage}
-              message={`Plant registered successfully!`}
-            />
-        <SidePlant />
+        <div className="flex-1">
+          <PlantForm onSubmit={handleSubmit} error={error} />
+          <InputConfirm
+            showOn={showMessage}
+            message={`Plant registered successfully!`}
+          />
+        </div>
+        <div className="flex-1">
+          <SidePlant />
+        </div>
       </main>
       <Footer />
     </>
