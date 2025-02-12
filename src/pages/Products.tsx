@@ -54,7 +54,7 @@ const Products = () => {
           </li>
           <li
             className={`cursor-pointer p-2 text-left rounded-lg text-slate-500`}
-            onClick={() => handleCategoryChange('Terracy & Balcony')}
+            onClick={() => handleCategoryChange('Terrace & Balcony')}
           >
             Terrace & Balcony
           </li>

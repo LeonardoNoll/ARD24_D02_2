@@ -29,7 +29,7 @@ const EditPlant: React.FC = () => {
       if (!response.ok) throw new Error("Update failed");
 
       fetchProducts();
-      navigate("/products");
+      navigate("/products/:id");
     } catch (err) {
       setSubmitError("Error updating plant. Please try again.");
     }
