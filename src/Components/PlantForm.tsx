@@ -114,7 +114,7 @@ const PlantForm = ({
         <h1 className="font-play-display text-5xl font-bold mb-3 text-emerald-900">
           {isEdit ? "Edit Plant" : "Register Plant"}
         </h1>
-        <h3>
+        <h3 className="font-inter font-normal text-[18px] leading-7 text-slate-500 max-w-[490px] w-full">
           Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa
           neque.
         </h3>

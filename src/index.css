@@ -10,6 +10,10 @@
   .input-group {
     @apply flex flex-col gap-2 font-inter font-medium;
 
+    & label {
+      @apply font-inter font-medium text-[18px] leading-[21px] text-slate-700;
+    }
+
     & input,
     select,
     textarea {

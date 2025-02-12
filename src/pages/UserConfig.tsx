@@ -101,7 +101,7 @@ const UserConfig = () => {
             <h1 className="font-play-display text-5xl font-bold mb-3 text-emerald-900 ">
               User config
             </h1>
-            <p className="font-inter font-normal text-[18px] leading-7 text-slate-500 w-[490px]">
+            <p className="font-inter font-normal text-[18px] leading-7 text-slate-500 max-w-[490px] w-full">
               Lorem ipsum dolor sit amet consectetur. Turpis vitae at et massa
               neque.
             </p>
