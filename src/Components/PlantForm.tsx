@@ -29,6 +29,7 @@ interface PlantFormProps {
     description: string;
     image: string;
     highlight: boolean;
+    discountedPrice: number;
   };
   onSubmit: (formData: any) => Promise<void>;
   error: string;
@@ -93,8 +94,8 @@ const PlantForm = ({
         const updatedData = {
           ...formData,
           id: isEdit ? formData.id : uuidv4(),
-          image:
-            isEdit && !formData.image ? initialData?.image : formData.image,
+          image: isEdit && !formData.image ? initialData?.image : formData.image,
+          discountedPrice: Number(formData.price) * (1 - Number(formData.discount) / 100),
         };
 
         await onSubmit(updatedData);
