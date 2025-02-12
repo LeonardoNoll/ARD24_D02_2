@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
-import Footer from "../src/Components/Footer";
-import Header from "../src/Components/Header";
-import PrivateRoute from "./Components/PrivateRoute.tsx";
+import Footer from "../src/components/Footer";
+import Header from "../src/components/Header";
+import PrivateRoute from "./components/PrivateRoute.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import EditPlant from "./pages/EditPlant.tsx";
 import { HomeLogoff } from "./pages/HomeLogoff.tsx";

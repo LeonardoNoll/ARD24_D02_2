@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import InvalidInputMessage from "../Components/InvalidInputMessage";
+import InvalidInputMessage from "../components/InvalidInputMessage";
+import InputConfirm from "../components/InputConfirm";
 import { useProducts } from "../context/ProductContext";
 import {
   validateDescription,
@@ -13,6 +14,9 @@ import {
 } from "../utils/validations";
 
 const categories = ["Indoor", "Outdoor", "Terrace & Balcony", "Office Desk"];
+
+// estado para verificar se já houve tentativa de submit
+
 
 interface PlantFormProps {
   initialData?: {
@@ -51,6 +55,8 @@ const PlantForm = ({
     },
   );
 
+ 
+  const [showMessage, setShowMessage] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState(false);
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
     {},
@@ -79,6 +85,8 @@ const PlantForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    setShowMessage(false);
+    
 
     if (Object.values(validations).every((v) => v)) {
       try {
@@ -93,6 +101,7 @@ const PlantForm = ({
       } catch (err) {
         console.error(err);
       }
+      setShowMessage(true);
     }
   };
 
@@ -259,6 +268,10 @@ const PlantForm = ({
       >
         {isEdit ? "Save Changes" : "Register Plant"}
       </button>
+      <InputConfirm
+              showOn={showMessage}
+              message={`Plant ${isEdit ? "updated" : "registered"} successfully!`}
+            />
     </form>
   );
 };

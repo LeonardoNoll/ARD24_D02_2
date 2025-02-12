@@ -13,12 +13,12 @@
     },
     {
       "id": "2",
-      "name": "Echinocereus Cactus2 ",
+      "name": "Echinocereus Cactus2",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
       "discount": 20,
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
-      "category": "Indoor",
+      "category": "Outdoor",
       "image": "/src/assets/image/cactus.png",
       "highlight": true
     },
@@ -87,6 +87,17 @@
       "description": "planta foi adicionada para venda",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
       "highlight": false
+    },
+    {
+      "id": "3a05b622-b5b0-495d-8a2c-ca05a03292a4",
+      "name": "Testeeeee",
+      "subtitle": "testeeee",
+      "category": "Terrace & Balcony",
+      "price": 1400,
+      "discount": 15,
+      "description": "ijdisajdaijdasjodajsdiojsasdajiodoi",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": true
     }
   ]
 }
