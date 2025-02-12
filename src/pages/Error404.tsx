@@ -23,7 +23,7 @@ export default function Error404() {
             <p className="mt-4">
               <button
                 onClick={handleRedirect}
-                className="inline-block px-8 py-3 bg-emerald-900 text-white font-inter rounded-md shadow-md hover:bg-emerald-700 transition duration-300 ease-in-out"
+                className="inline-block px-8 py-3 bg-emerald-900 text-white font-inter rounded-md shadow-md hover:bg-emerald-800 transition duration-300 ease-in-out"
               >
                 Return to home page
               </button>
