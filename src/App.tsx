@@ -1,18 +1,18 @@
 import { Route, Routes } from "react-router";
-import Footer from "../src/components/Footer";
-import Header from "../src/components/Header";
-import PrivateRoute from "./components/PrivateRoute.tsx";
+import Footer from "../src/Components/Footer";
+import Header from "../src/Components/Header";
+import PrivateRoute from "./Components/PrivateRoute.tsx";
+import AboutProduct from "./pages/AboutProduct.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import EditPlant from "./pages/EditPlant.tsx";
-import { HomeLogoff } from "./pages/HomeLogoff.tsx";
+import Error403 from "./pages/Error403.tsx";
+import Error404 from "./pages/Error404.tsx";
+import HomeLogoff from "./pages/HomeLogoff.tsx";
 import Login from "./pages/Login.tsx";
 import Products from "./pages/Products.tsx";
 import RegisterPlant from "./pages/RegisterPlant.tsx";
 import RegisterUser from "./pages/RegisterUser.tsx";
 import UserConfig from "./pages/UserConfig.tsx";
-import AboutProduct from "./pages/AboutProduct.tsx";
-import { Error404 } from "./pages/Error404.tsx";
-import { Error403 } from "./pages/Error403.tsx";
 
 function App() {
   return (
@@ -24,6 +24,8 @@ function App() {
         <Route path="about-us" element={<AboutUs />} />
         <Route path="register" element={<RegisterUser />} />
         <Route path="login" element={<Login />} />
+        <Route path="403" element={<Error403 />} />
+        <Route path="*" element={<Error404 />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="products/:id" element={<AboutProduct />} />
@@ -33,15 +35,13 @@ function App() {
             path="products"
             element={
               <>
-                <Header isLogin={true} />
+                <Header />
                 <Products />
                 <Footer />
               </>
             }
           ></Route>
         </Route>
-        <Route path="*" element={<Error404 />} />
-        <Route path="/403" element={<Error403 />} />
       </Routes>
     </>
   );

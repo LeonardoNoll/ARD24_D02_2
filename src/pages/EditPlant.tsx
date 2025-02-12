@@ -52,7 +52,7 @@ const EditPlant: React.FC = () => {
 
   return (
     <>
-      <Header isLogin={true} />
+      <Header />
       <main className="flex w-screen justify-center bg-slate-50 ">
         <PlantForm
           initialData={initialFormData}
@@ -68,4 +68,3 @@ const EditPlant: React.FC = () => {
 };
 
 export default EditPlant;
-

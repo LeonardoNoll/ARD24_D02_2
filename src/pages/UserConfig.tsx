@@ -91,7 +91,7 @@ const UserConfig = () => {
   };
   return (
     <>
-      <Header isLogin={false} />
+      <Header />
       <main className="flex w-full justify-center bg-slate-50 ">
         <form
           onSubmit={handleSubmit}

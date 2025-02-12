@@ -39,7 +39,7 @@ const RegisterPlant = () => {
 
   return (
     <>
-      <Header isLogin={true} />
+      <Header />
       <main className="flex w-screen justify-center bg-slate-50 ">
         <PlantForm onSubmit={handleSubmit} error={error} />
         <InputConfirm
@@ -54,4 +54,3 @@ const RegisterPlant = () => {
 };
 
 export default RegisterPlant;
-
