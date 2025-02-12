@@ -5,7 +5,7 @@ import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react";
 const isPath = (pathname: string, path: string): string =>
   pathname === path ? "nav-link text-emerald-900" : "nav-link";
 
-function Header(props: { isLogin: boolean }) {
+function Header() {
   const { pathname } = useLocation();
 
   return (
