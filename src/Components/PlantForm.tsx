@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import InvalidInputMessage from "../components/InvalidInputMessage";
-import InputConfirm from "../components/InputConfirm";
+import InvalidInputMessage from "../Components/InvalidInputMessage";
+import InputConfirm from "../Components/InputConfirm";
 import { useProducts } from "../context/ProductContext";
 import {
   validateDescription,
@@ -16,7 +16,6 @@ import {
 const categories = ["Indoor", "Outdoor", "Terrace & Balcony", "Office Desk"];
 
 // estado para verificar se já houve tentativa de submit
-
 
 interface PlantFormProps {
   initialData?: {
@@ -56,7 +55,6 @@ const PlantForm = ({
     },
   );
 
- 
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState(false);
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
@@ -87,15 +85,16 @@ const PlantForm = ({
     e.preventDefault();
     setSubmitted(true);
     setShowMessage(false);
-    
 
     if (Object.values(validations).every((v) => v)) {
       try {
         const updatedData = {
           ...formData,
           id: isEdit ? formData.id : uuidv4(),
-          image: isEdit && !formData.image ? initialData?.image : formData.image,
-          discountedPrice: Number(formData.price) * (1 - Number(formData.discount) / 100),
+          image:
+            isEdit && !formData.image ? initialData?.image : formData.image,
+          discountedPrice:
+            Number(formData.price) * (1 - Number(formData.discount) / 100),
         };
 
         await onSubmit(updatedData);
@@ -270,9 +269,9 @@ const PlantForm = ({
         {isEdit ? "Save Changes" : "Register Plant"}
       </button>
       <InputConfirm
-              showOn={showMessage}
-              message={`Plant ${isEdit ? "updated" : "registered"} successfully!`}
-            />
+        showOn={showMessage}
+        message={`Plant ${isEdit ? "updated" : "registered"} successfully!`}
+      />
     </form>
   );
 };

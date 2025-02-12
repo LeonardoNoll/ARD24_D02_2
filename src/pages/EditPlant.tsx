@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
 import useFetchProduct from "../hooks/useFetchProduct";
-import SidePlant from "../components/SidePlant";
-import PlantForm from "../components/PlantForm";
+import SidePlant from "../Components/SidePlant";
+import PlantForm from "../Components/PlantForm";
 import { useProducts } from "../context/ProductContext";
 
 const EditPlant: React.FC = () => {
@@ -13,7 +13,6 @@ const EditPlant: React.FC = () => {
   const { fetchProducts } = useProducts();
   const navigate = useNavigate();
   const [submitError, setSubmitError] = React.useState("");
-  
 
   const handleSubmit = async (updatedProduct: any) => {
     try {
