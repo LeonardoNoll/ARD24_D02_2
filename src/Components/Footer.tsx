@@ -2,6 +2,10 @@ import { Link } from "react-router";
 import logoWhite from "../assets/image/logo-white.svg";
 
 function Footer() {
+
+  const backTop = () => { 
+    window.scrollTo({top: 0, behavior: "smooth"})
+  }
   return (
     <footer className="bg-[url(/../src/assets/image/background-footer.png)] bg-cover bg-center w-full h-[422px] text-white flex justify-center ">
       <section className="w-[1274px] h-[298px] pt-20">
@@ -59,11 +63,13 @@ function Footer() {
           </section>
         </section>
         <section className="flex w-[1274px] h-[82px] border-t-1 border-emerald-950 justify-between">
-          <img
-            src={logoWhite}
-            alt="planta branca"
-            className="w-49px h-54px mt-7"
-          />
+            <img
+              src={logoWhite}
+              alt="planta branca"
+              className="w-[49px] h-[54px] mt-7 cursor-pointer"
+              onClick={backTop}
+            />
+
           <p className="font-inter font-normal text-16px leading-[25px] text-center mt-[42.5px] ">
             Compassinhos ®. All rights reserved.
           </p>
