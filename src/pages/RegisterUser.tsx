@@ -6,7 +6,6 @@ import { FormEvent, useState } from "react";
 import InputConfirm from "../Components/InputConfirm.tsx";
 import InvalidInputMessage from "../Components/InvalidInputMessage.tsx";
 import SidePlant from "../Components/SidePlant";
-import { useNavigate } from "react-router";
 import LogoLink from "../Components/LogoLink.tsx";
 import {
   validateEmail,
@@ -18,7 +17,6 @@ import {
 
 function RegisterUser() {
   const { isLoaded, signUp } = useSignUp();
-  const navigate = useNavigate();
 
   // objeto de estados para as entradas
   const [formData, setFormData] = useState({
@@ -31,7 +29,6 @@ function RegisterUser() {
   // estado para verificar se já houve tentativa de submit
   const [submit, setSubmit] = useState<boolean>(false);
   const [showMessage, setShowMessage] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
 
   //estados para ver senhas enquanto estão no input
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -58,15 +55,14 @@ function RegisterUser() {
         emailAddress: formData.email,
         password: formData.password,
         firstName: formData.name.split(" ")[0],
-        lastName: formData.name.split(" ").shift(),
+        lastName: formData.name.split(" ").slice(1).join(" "),
       });
-      if (signUp.createdSessionId) {
-        navigate("/");
-      } else {
-        throw new Error("Failed to create session.");
-      }
+      await signUp.prepareEmailAddressVerification({
+        strategy: "email_link",
+        redirectUrl: "http://localhost:5173/",
+      });
+      setShowMessage(true);
     } catch (err) {
-      // setError(err.errors[0].message);
       console.error(err);
     }
 
@@ -168,7 +164,6 @@ function RegisterUser() {
               validOn={!submit || validatePassword(formData.password)}
               message={`Enter a password with at least 8 characters, letters and numbers, at least 1 capital letter and 1 special character.`}
             />
-
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
               Confirm Password
             </label>
@@ -210,8 +205,6 @@ function RegisterUser() {
               message={`Passwords are different`}
             />
 
-            {/* Exibe a mensagem apenas se showMessage for true */}
-            {showMessage && <InputConfirm message="Registered successfully" />}
             <button
               className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6"
               type="submit"
@@ -227,6 +220,10 @@ function RegisterUser() {
                 Login here
               </Link>
             </p>
+            <InputConfirm
+              showOn={showMessage}
+              message="A verification link has been sent to your email. Verify your account to finish the sign up."
+            />
           </form>
         </section>
       </section>

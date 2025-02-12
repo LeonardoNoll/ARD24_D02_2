@@ -107,9 +107,14 @@ const Carousel: React.FC = () => {
                       <h3 className="text-lg font-semibold font-inter text-slate-600 hover:underline cursor-pointer" onClick={() => window.location.href = `/products/${product.id}`}>
                         {product.name}
                       </h3>
-                      <p className="text-sm font-inter text-slate-400">
-                        ${product.price}
-                      </p>
+                      {product.discount > 0 ? (
+                    <div className="flex items-center space-x-2">
+                    <p className="text-slate-500 mt-2 ">${product.discountedPrice.toFixed(2)}</p>
+                    <p className="text-slate-400 mt-2 line-through mr-2">${product.price.toFixed(2)}</p>
+                  </div>
+                ) : (
+                  <p className="text-slate-500 mt-2">${product.price.toFixed(2)}</p>
+                )}
                     </div>
                   </div>
                 </div>

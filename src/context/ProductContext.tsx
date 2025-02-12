@@ -11,6 +11,7 @@ export interface Product {
   description: string;
   subtitle: string;
   discount: number;
+  discountedPrice: number;
 }
 
 interface ProductContextType {
