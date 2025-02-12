@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import backgrounderror from "../assets/image/backgrounderror.png";
 
-export function Error403() {
+export default function Error403() {
   const navigate = useNavigate();
   const handleRedirect = () => {
     navigate("/login");

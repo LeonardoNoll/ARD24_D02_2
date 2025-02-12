@@ -9,18 +9,20 @@
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
       "category": "Indoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": false
+      "highlight": false,
+      "discountedPrice": 12
     },
     {
       "id": "2",
-      "name": "Echinocereus Cactus2 ",
+      "name": "Echinocereus Cactus2",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
-      "discount": 20,
+      "discount": 25,
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
-      "category": "Indoor",
+      "category": "Outdoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": true
+      "highlight": true,
+      "discountedPrice": 11.25
     },
     {
       "id": "3",
@@ -31,18 +33,20 @@
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
       "category": "Indoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": true
+      "highlight": true,
+      "discountedPrice": 12
     },
     {
       "id": "4",
       "name": "Echinocereus Cactus4",
       "subtitle": "A majestic addition to your plant collection",
       "price": 15,
-      "discount": 20,
+      "discount": 0,
       "description": "Our website offers a wide array of stunning plants, ranging from vibrant flowers to lush indoor foliage, allowing you to create your very own green oasis. In addition to our extensive plant selection.",
       "category": "Indoor",
       "image": "/src/assets/image/cactus.png",
-      "highlight": true
+      "highlight": true,
+      "discountedPrice": 15
     },
     {
       "id": "95bc97dc-8aac-440f-abd5-a641b302716a",
@@ -50,10 +54,11 @@
       "subtitle": "test",
       "category": "Outdoor",
       "price": 23,
-      "discount": 5,
-      "description": "dsdsderfdgdfg",
+      "discount": 0,
+      "description": "dsdsderfdgdsdfsdfgsdgsgsgdfsfg",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
-      "highlight": true
+      "highlight": true,
+      "discountedPrice": 23
     },
     {
       "id": "8118af1c-3079-4092-8293-698f7dcc4363",
@@ -62,9 +67,10 @@
       "category": "Indoor",
       "price": 12212,
       "discount": 20,
-      "description": "dsddsds",
+      "description": "dsddsddsdsdssdssdsds",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
-      "highlight": false
+      "highlight": false,
+      "discountedPrice": 9769.6
     },
     {
       "id": "69d35c90-dd3d-4644-9df0-ac03677bf944",
@@ -75,7 +81,8 @@
       "discount": 15,
       "description": " Teste  Teste  Teste ",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
-      "highlight": true
+      "highlight": true,
+      "discountedPrice": 1287.75
     },
     {
       "id": "f9acb2e0-dd3a-4894-b5e5-2136be2e9b48",
@@ -86,7 +93,20 @@
       "discount": 0,
       "description": "planta foi adicionada para venda",
       "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
-      "highlight": false
+      "highlight": false,
+      "discountedPrice": 10
+    },
+    {
+      "id": "3a05b622-b5b0-495d-8a2c-ca05a03292a4",
+      "name": "Testeeeee",
+      "subtitle": "testeeee",
+      "category": "Terrace & Balcony",
+      "price": 1400,
+      "discount": 15,
+      "description": "ijdisajdaijdasjodajsdiojsasdajiodoi",
+      "image": "https://cdn-icons-png.flaticon.com/512/180/180862.png",
+      "highlight": true,
+      "discountedPrice": 1190
     }
   ]
 }

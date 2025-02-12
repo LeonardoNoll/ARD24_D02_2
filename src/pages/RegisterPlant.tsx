@@ -4,12 +4,14 @@ import Header from "../Components/Header";
 import SidePlant from "../Components/SidePlant";
 import PlantForm from "../Components/PlantForm";
 import { useProducts } from "../context/ProductContext";
+import InputConfirm from "../Components/InputConfirm";
 import { useState } from "react";
 
 const RegisterPlant = () => {
   const navigate = useNavigate();
   const { fetchProducts } = useProducts();
   const [error, setError] = useState("");
+  const [showMessage, setShowMessage] = useState<boolean>(false);
 
   const handleSubmit = async (newProduct: any) => {
     try {
@@ -25,8 +27,11 @@ const RegisterPlant = () => {
 
       if (!response.ok) throw new Error("Registration failed");
 
+      setShowMessage(true);
       fetchProducts();
-      navigate("/products");
+      setTimeout(() => {
+        navigate(`/products/`);
+      }, 2000);
     } catch (err) {
       setError("Error submitting plant. Please try again.");
     }
@@ -34,9 +39,13 @@ const RegisterPlant = () => {
 
   return (
     <>
-      <Header isLogin={true} />
+      <Header />
       <main className="flex w-screen justify-center bg-slate-50 ">
         <PlantForm onSubmit={handleSubmit} error={error} />
+        <InputConfirm
+              showOn={showMessage}
+              message={`Plant registered successfully!`}
+            />
         <SidePlant />
       </main>
       <Footer />
@@ -45,4 +54,3 @@ const RegisterPlant = () => {
 };
 
 export default RegisterPlant;
-
