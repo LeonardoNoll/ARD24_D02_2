@@ -68,7 +68,7 @@ function Login() {
               Lorem ipsum dolor sit amet consectetur.
             </p>
           </article>
-          <form onSubmit={handleSubmit} className="input-group flex">
+          <form onSubmit={handleSubmit} className="input-group flex gap-3">
             <label className="font-inter font-medium text-[16px]  leading-5 text-slate-700">
               E-mail
             </label>
@@ -101,6 +101,7 @@ function Login() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
+                className=" absolute right-2 top-0.5"
               >
                 {showPassword ? (
                   <img
@@ -112,7 +113,7 @@ function Login() {
                   <img
                     src={eye}
                     alt="icon open eye"
-                    className="absolute w-[36px]  right-2 top-0.5"
+                    className="w-[36px]"
                   />
                 )}
               </button>
@@ -135,7 +136,7 @@ function Login() {
             </section>
             <button
               type="submit"
-              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600]text-center font-[16px] leading-6 mt-8"
+              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-[600]text-center font-[16px] leading-6 mt-2"
             >
               Login
             </button>

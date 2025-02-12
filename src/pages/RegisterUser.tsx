@@ -1,6 +1,6 @@
 import eye from "../assets/image/eye.png";
 import ocult from "../assets/image/ocult.png";
-
+import { Link } from "react-router-dom";
 import { useSignUp } from "@clerk/clerk-react";
 import { FormEvent, useState } from "react";
 import InputConfirm from "../Components/InputConfirm.tsx";
@@ -90,7 +90,7 @@ function RegisterUser() {
 
           <form
             action=""
-            className="input-group flex gap-1"
+            className="input-group flex gap-3"
             onSubmit={submitButton}
           >
             <label className="font-inter font-medium text-[16px] leading-5 text-slate-700">
@@ -143,18 +143,19 @@ function RegisterUser() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
+                className="right-2 top-0.5 absolute"
               >
                 {showPassword ? (
                   <img
                     src={ocult}
                     alt="icon ocult"
-                    className="absolute w-[32px]  right-2 top-0.5"
+                    className=" w-[32px]  "
                   />
                 ) : (
                   <img
                     src={eye}
                     alt="icon open eye"
-                    className="absolute w-[36px]  right-2 top-0.5"
+                    className="w-[36px]"
                   />
                 )}
               </button>
@@ -179,18 +180,19 @@ function RegisterUser() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-2 top-0.5"
               >
                 {showConfirmPassword ? (
                   <img
                     src={ocult}
                     alt="icon ocult"
-                    className="absolute w-[32px]  right-2 top-0.5"
+                    className="w-[32px] "
                   />
                 ) : (
                   <img
                     src={eye}
                     alt="icon open eye"
-                    className="absolute w-[36px]  right-2 top-0.5"
+                    className="w-[36px]"
                   />
                 )}
               </button>
@@ -204,11 +206,20 @@ function RegisterUser() {
             />
 
             <button
-              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6 mt-8"
+              className="bg-emerald-900 w-full h-12 rounded-[8px] px-10 py-3 font-inter text-white font-semibold text-center text-[16px] leading-6"
               type="submit"
             >
               Register
             </button>
+            <p className="font-inter text-[16px] leading-6 text-emerald-900 hover:font-medium mt-1">
+              Already registered?{" "}
+              <Link
+                to="/login"
+                className="hover:underline hover:cursor-pointer"
+              >
+                Login here
+              </Link>
+            </p>
             <InputConfirm
               showOn={showMessage}
               message="A verification link has been sent to your email. Verify your account to finish the sign up."
